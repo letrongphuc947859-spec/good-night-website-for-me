@@ -1,2367 +1,892 @@
-<!doctype html>
-<html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>Chúc Ngủ Ngon 🌙</title>
-    <meta
-      name="description"
-      content="Một chút bình yên trước khi chìm vào giấc ngủ."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      /* =========================
-   ROOT / TOKENS
-========================= */
-      :root {
-        --bg-deep: #0a0e27;
-        --bg-mid: #131a3d;
-        --bg-purple: #3a2f5c;
-        --accent-pink: #e8b4c8;
-        --accent-gold: #f5d9a8;
-        --moon: #fdf6e3;
-        --ink: #f2eee6;
-        --ink-dim: rgba(242, 238, 230, 0.68);
-        --glass: rgba(255, 255, 255, 0.06);
-        --glass-border: rgba(255, 255, 255, 0.14);
-        --shadow-glow: 0 0 40px rgba(232, 180, 200, 0.18);
-        --font-display: "Cormorant Garamond", serif;
-        --font-body: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
-        --ease: cubic-bezier(0.22, 1, 0.36, 1);
-      }
-      body.theme-galaxy {
-        --bg-deep: #120a24;
-        --bg-mid: #241340;
-        --bg-purple: #4a1f66;
-        --accent-pink: #c9a3ff;
-      }
-      body.theme-moon {
-        --bg-deep: #060912;
-        --bg-mid: #0f1a30;
-        --bg-purple: #1c2b4a;
-        --accent-pink: #dfe6f5;
-      }
-      body.theme-purple {
-        --bg-deep: #160a2e;
-        --bg-mid: #2a1150;
-        --bg-purple: #4b1e78;
-        --accent-pink: #d9a8f5;
-      }
-      body.theme-blue {
-        --bg-deep: #04101f;
-        --bg-mid: #0a2035;
-        --bg-purple: #123a54;
-        --accent-pink: #a8d9f5;
-      }
-      body.theme-garden {
-        --bg-deep: #140a1e;
-        --bg-mid: #2a1230;
-        --bg-purple: #4a1f3c;
-        --accent-pink: #f5a8c8;
-      }
-      body.deep-night {
-        filter: brightness(0.78) saturate(0.9);
-      }
+<!DOCTYPE html>
+<html lang="vi" data-theme="night">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080b22">
+  <meta name="description" content="Một không gian lãng mạn dưới ánh trăng: câu chuyện tình yêu, kỷ niệm, lá thư, chòm sao và âm nhạc của riêng bạn.">
+  <meta name="color-scheme" content="dark light">
+  <meta property="og:title" content="Tình Yêu Dưới Ánh Trăng">
+  <meta property="og:description" content="Giữa hàng triệu vì sao, anh vẫn tìm thấy một ánh sáng mang tên em.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/moon-favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/moon-favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Tình Yêu Dưới Ánh Trăng — Kỷ Niệm Của Chúng Ta</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('moonlight-theme');
+      if (savedTheme === 'day') document.documentElement.dataset.theme = 'day';
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.documentElement.dataset.motion = reducedMotion ? 'reduced' : 'full';
+    } catch (error) {
+      document.documentElement.dataset.motion = 'full';
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Bỏ qua điều hướng, đến nội dung chính</a>
 
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-      }
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+        <path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>
+      </symbol>
+      <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+        <path d="M4 12h15M13.5 5.5 20 12l-6.5 6.5"/>
+      </symbol>
+      <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+        <path d="m14.5 5-7 7 7 7"/>
+      </symbol>
+      <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+        <path d="m9.5 5 7 7-7 7"/>
+      </symbol>
+      <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path d="M20.8 5.7a5.2 5.2 0 0 0-7.4 0L12 7.1l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 22l8.8-8.9a5.2 5.2 0 0 0 0-7.4Z"/>
+      </symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24">
+        <path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9Z"/>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path d="M20.7 14.1A8.7 8.7 0 0 1 9.9 3.3 8.8 8.8 0 1 0 20.7 14.1Z"/>
+      </symbol>
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M18 6 6 18"/>
+      </symbol>
+      <symbol id="icon-upload" viewBox="0 0 24 24">
+        <path d="M12 16V3M7 8l5-5 5 5M4 15v5h16v-5"/>
+      </symbol>
+      <symbol id="icon-image" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="16" rx="3"/>
+        <circle cx="9" cy="10" r="2"/>
+        <path d="m4 18 5-5 4 4 3-3 4 4"/>
+      </symbol>
+      <symbol id="icon-play" viewBox="0 0 24 24">
+        <path d="m8 5 11 7-11 7Z"/>
+      </symbol>
+      <symbol id="icon-pause" viewBox="0 0 24 24">
+        <path d="M7 5h4v14H7zM14 5h4v14h-4z"/>
+      </symbol>
+      <symbol id="icon-next" viewBox="0 0 24 24">
+        <path d="m5 5 10 7L5 19ZM19 5v14"/>
+      </symbol>
+      <symbol id="icon-previous" viewBox="0 0 24 24">
+        <path d="m19 5-10 7 10 7ZM5 5v14"/>
+      </symbol>
+      <symbol id="icon-volume" viewBox="0 0 24 24">
+        <path d="M4 9h4l5-4v14l-5-4H4zM17 8a6 6 0 0 1 0 8M20 5a10 10 0 0 1 0 14"/>
+      </symbol>
+      <symbol id="icon-volume-off" viewBox="0 0 24 24">
+        <path d="M4 9h4l5-4v14l-5-4H4zM17 9l5 6M22 9l-5 6"/>
+      </symbol>
+      <symbol id="icon-envelope" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="3"/>
+        <path d="m4 7 8 6 8-6"/>
+      </symbol>
+      <symbol id="icon-mail-open" viewBox="0 0 24 24">
+        <path d="M3 10 12 4l9 6v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>
+        <path d="m3 10 9 7 9-7"/>
+      </symbol>
+      <symbol id="icon-expand" viewBox="0 0 24 24">
+        <path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/>
+      </symbol>
+      <symbol id="icon-zoom-in" viewBox="0 0 24 24">
+        <circle cx="10.5" cy="10.5" r="6.5"/>
+        <path d="m16 16 5 5M7.5 10.5h6M10.5 7.5v6"/>
+      </symbol>
+      <symbol id="icon-zoom-out" viewBox="0 0 24 24">
+        <circle cx="10.5" cy="10.5" r="6.5"/>
+        <path d="m16 16 5 5M7.5 10.5h6"/>
+      </symbol>
+      <symbol id="icon-trash" viewBox="0 0 24 24">
+        <path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6"/>
+      </symbol>
+      <symbol id="icon-edit" viewBox="0 0 24 24">
+        <path d="m14 5 5 5M4 20l5-1L20 8a2.8 2.8 0 0 0-4-4L5 15Z"/>
+      </symbol>
+      <symbol id="icon-slideshow" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="13" rx="2"/>
+        <path d="m10 8 5 3-5 3ZM8 21h8M12 17v4"/>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6"/>
+      </symbol>
+      <symbol id="icon-music" viewBox="0 0 24 24">
+        <path d="M9 18V5l11-2v13M9 9l11-2"/>
+        <circle cx="6" cy="18" r="3"/>
+        <circle cx="17" cy="16" r="3"/>
+      </symbol>
+      <symbol id="icon-sparkles" viewBox="0 0 24 24">
+        <path d="m12 3 1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7ZM19 14l.9 2.1L22 17l-2.1.9L19 20l-.9-2.1L16 17l2.1-.9ZM5 14l.8 1.7L7.5 16l-1.7.8L5 18.5l-.8-1.7L2.5 16l1.7-.3Z"/>
+      </symbol>
+      <symbol id="icon-infinity" viewBox="0 0 24 24">
+        <path d="M12 12c-2-3-3.5-4-5.5-4a4.5 4.5 0 0 0 0 9c2 0 3.5-1 5.5-4Zm0 0c2-3 3.5-4 5.5-4a4.5 4.5 0 0 1 0 9c-2 0-3.5-1-5.5-4Z"/>
+      </symbol>
+    </defs>
+  </svg>
 
-      body {
-        margin: 0;
-        font-family: var(--font-body);
-        color: var(--ink);
-        background: linear-gradient(
-          180deg,
-          var(--bg-deep),
-          var(--bg-mid) 45%,
-          var(--bg-purple)
-        );
-        background-attachment: fixed;
-        min-height: 100vh;
-        overflow-x: hidden;
-        transition:
-          filter 0.6s var(--ease),
-          background 0.8s var(--ease);
-      }
-      body.custom-bg {
-        background-size: cover;
-        background-position: center;
-      }
-      h1,
-      h2,
-      h3 {
-        font-family: var(--font-display);
-        font-weight: 600;
-        margin: 0;
-        letter-spacing: 0.01em;
-      }
-      p {
-        margin: 0;
-        line-height: 1.7;
-      }
-      a,
-      button,
-      input {
-        font-family: inherit;
-      }
-      button {
-        cursor: pointer;
-      }
-      img {
-        max-width: 100%;
-        display: block;
-      }
-      :focus-visible {
-        outline: 2px solid var(--accent-gold);
-        outline-offset: 3px;
-        border-radius: 6px;
-      }
+  <div class="page-wipe" id="page-wipe" aria-hidden="true"></div>
 
-      .wrap {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-      section {
-        position: relative;
-        padding: 110px 0;
-      }
-      .eyebrow {
-        display: none;
-      } /* intentionally unused — avoid template eyebrow tells */
+  <div class="loading-screen" id="loading-screen" role="status" aria-live="polite">
+    <div class="loading-orbit" aria-hidden="true">
+      <span class="loading-moon"></span>
+      <span class="loading-star loading-star-one"></span>
+      <span class="loading-star loading-star-two"></span>
+    </div>
+    <p class="loading-title">Tình yêu dưới ánh trăng</p>
+    <p class="loading-copy" id="loading-copy">Đang thắp sáng những vì sao…</p>
+    <div class="loading-track" aria-hidden="true"><span id="loading-progress"></span></div>
+    <span class="sr-only" id="loading-status">Đang tải trải nghiệm</span>
+  </div>
 
-      /* =========================
-   NIGHT SKY CANVAS
-========================= */
-      #sky-canvas {
-        position: fixed;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        pointer-events: none;
-      }
-      .moon-glow {
-        position: fixed;
-        top: 8%;
-        right: 12%;
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle at 35% 35%,
-          var(--moon),
-          #e9d9ad 55%,
-          transparent 72%
-        );
-        box-shadow: 0 0 90px 30px rgba(253, 246, 227, 0.25);
-        z-index: 0;
-        pointer-events: none;
-        animation: moonFloat 12s ease-in-out infinite;
-      }
-      @keyframes moonFloat {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-14px);
-        }
-      }
-      .clouds {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        overflow: hidden;
-      }
-      .cloud {
-        position: absolute;
-        opacity: 0.1;
-        filter: blur(1px);
-        background: #fff;
-        border-radius: 50%;
-      }
-      .cloud::before,
-      .cloud::after {
-        content: "";
-        position: absolute;
-        background: #fff;
-        border-radius: 50%;
-      }
+  <div class="cosmic-background" aria-hidden="true">
+    <div class="sky-gradient"></div>
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+    <div class="aurora aurora-three"></div>
+    <div class="galaxy-haze"></div>
+    <canvas id="cosmos-canvas"></canvas>
+    <div class="moonbeam"></div>
+    <div class="background-vignette"></div>
+  </div>
 
-      .clickable-star {
-        position: absolute;
-        width: 26px;
-        height: 26px;
-        background: none;
-        border: none;
-        padding: 0;
-        z-index: 2;
-        color: var(--accent-gold);
-        font-size: 16px;
-        filter: drop-shadow(0 0 4px rgba(245, 217, 168, 0.7));
-        animation: twinkle 3s ease-in-out infinite;
-      }
-      @keyframes twinkle {
-        0%,
-        100% {
-          opacity: 0.5;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1.25);
-        }
-      }
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+  <canvas class="effects-canvas" id="effects-canvas" aria-hidden="true"></canvas>
+  <div class="floating-hearts" id="floating-hearts" aria-hidden="true"></div>
+  <div class="toast-region" id="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
 
-      /* =========================
-   NAV
-========================= */
-      nav.floatnav {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 50;
-        display: flex;
-        gap: 4px;
-        padding: 8px;
-        border-radius: 999px;
-        background: rgba(10, 14, 39, 0.55);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: 1px solid var(--glass-border);
-      }
-      nav.floatnav a {
-        color: var(--ink-dim);
-        text-decoration: none;
-        font-size: 0.85rem;
-        padding: 8px 14px;
-        border-radius: 999px;
-        transition:
-          color 0.3s,
-          background 0.3s;
-      }
-      nav.floatnav a:hover,
-      nav.floatnav a:focus-visible {
-        color: var(--ink);
-        background: rgba(255, 255, 255, 0.08);
-      }
-      .nav-toggle {
-        display: none;
-      }
-      @media (max-width: 720px) {
-        nav.floatnav {
-          gap: 0;
-          padding: 6px;
-          top: 14px;
-        }
-        nav.floatnav .nav-links {
-          display: none;
-          position: absolute;
-          top: 52px;
-          left: 50%;
-          transform: translateX(-50%);
-          flex-direction: column;
-          background: rgba(10, 14, 39, 0.92);
-          border: 1px solid var(--glass-border);
-          border-radius: 16px;
-          padding: 8px;
-          min-width: 160px;
-        }
-        nav.floatnav .nav-links.open {
-          display: flex;
-        }
-        nav.floatnav a {
-          padding: 10px 14px;
-          text-align: center;
-        }
-        .nav-toggle {
-          display: block;
-          background: none;
-          border: none;
-          color: var(--ink);
-          font-size: 1.2rem;
-          padding: 8px 12px;
-        }
-      }
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
 
-      /* =========================
-   HERO
-========================= */
-      .hero {
-        min-height: 100svh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 24px;
-        position: relative;
-        z-index: 1;
-      }
-      .hero h1 {
-        font-size: clamp(2.4rem, 7vw, 4.2rem);
-        font-style: italic;
-        color: var(--ink);
-        text-shadow: 0 0 40px rgba(232, 180, 200, 0.35);
-      }
-      .hero .subtitle {
-        margin-top: 22px;
-        max-width: 480px;
-        font-size: 1.05rem;
-        color: var(--ink-dim);
-        font-weight: 300;
-      }
-      .btn-open {
-        margin-top: 44px;
-        padding: 16px 38px;
-        border-radius: 999px;
-        border: 1px solid var(--glass-border);
-        background: var(--glass);
-        color: var(--ink);
-        font-size: 1rem;
-        letter-spacing: 0.02em;
-        backdrop-filter: blur(10px);
-        box-shadow: var(--shadow-glow);
-        transition:
-          transform 0.4s var(--ease),
-          box-shadow 0.4s var(--ease);
-      }
-      .btn-open:hover {
-        transform: translateY(-3px) scale(1.03);
-        box-shadow: 0 0 60px rgba(232, 180, 200, 0.3);
-      }
-      .scroll-hint {
-        position: absolute;
-        bottom: 28px;
-        font-size: 0.75rem;
-        color: var(--ink-dim);
-        opacity: 0.6;
-        animation: bob 2.4s ease-in-out infinite;
-      }
-      @keyframes bob {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(6px);
-        }
-      }
+  <header class="site-header" id="site-header">
+    <div class="header-inner shell">
+      <a class="brand" href="#home" aria-label="Tình Yêu Dưới Ánh Trăng — về đầu trang">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="19" class="brand-moon-full"/>
+            <circle cx="31" cy="18" r="17" class="brand-moon-cut"/>
+            <path d="m37 8 1.2 3.3L41.5 12l-3.3 1.2L37 16.5l-1.2-3.3L32.5 12l3.3-.7Z" class="brand-spark"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Tình Yêu</span>
+          <span class="brand-subtitle">Dưới Ánh Trăng</span>
+        </span>
+      </a>
 
-      .main-content {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.9s var(--ease);
-      }
-      .main-content.revealed {
-        opacity: 1;
-        visibility: visible;
-      }
+      <nav class="desktop-nav" aria-label="Điều hướng chính">
+        <a href="#story" class="nav-link"><span>Câu chuyện</span></a>
+        <a href="#memories" class="nav-link"><span>Kỷ niệm</span></a>
+        <a href="#letter" class="nav-link"><span>Lá thư</span></a>
+        <a href="#universe" class="nav-link"><span>Vũ trụ</span></a>
+        <a href="#music" class="nav-link"><span>Âm nhạc</span></a>
+      </nav>
 
-      /* =========================
-   GLASS CARD BASE
-========================= */
-      .glass {
-        background: var(--glass);
-        border: 1px solid var(--glass-border);
-        border-radius: 24px;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.5);
-        position: relative;
-        z-index: 1;
-      }
+      <div class="header-actions">
+        <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Chuyển sang chế độ ban ngày" aria-pressed="false" title="Đổi ánh sáng">
+          <svg class="icon icon-moon" aria-hidden="true"><use href="#icon-moon"/></svg>
+          <svg class="icon icon-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
+        </button>
+        <a class="header-cta" href="#memories">
+          <svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg>
+          <span>Kỷ niệm của mình</span>
+        </a>
+        <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="icon icon-menu" aria-hidden="true"><use href="#icon-menu"/></svg>
+          <svg class="icon icon-close" aria-hidden="true"><use href="#icon-close"/></svg>
+        </button>
+      </div>
+    </div>
 
-      /* =========================
-   PERSONALIZED MESSAGE
-========================= */
-      .personalize {
-        text-align: center;
-      }
-      .personalize h2 {
-        font-size: clamp(1.8rem, 4vw, 2.6rem);
-        font-style: italic;
-      }
-      .name-input-row {
-        margin: 30px auto 0;
-        max-width: 380px;
-      }
-      .name-input-row input {
-        width: 100%;
-        padding: 14px 20px;
-        border-radius: 999px;
-        border: 1px solid var(--glass-border);
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--ink);
-        font-size: 1rem;
-        text-align: center;
-      }
-      .name-input-row input::placeholder {
-        color: var(--ink-dim);
-      }
-      .dynamic-greeting {
-        margin-top: 28px;
-        font-family: var(--font-display);
-        font-style: italic;
-        font-size: clamp(1.4rem, 3.6vw, 2rem);
-        color: var(--accent-pink);
-        min-height: 1.5em;
-        transition: opacity 0.4s;
-      }
-      .typewriter-box {
-        margin-top: 38px;
-        min-height: 64px;
-        font-size: 1.05rem;
-        color: var(--ink-dim);
-        font-weight: 300;
-      }
-      .tw-cursor {
-        display: inline-block;
-        width: 2px;
-        background: var(--accent-gold);
-        margin-left: 2px;
-        animation: blink 1s step-start infinite;
-      }
-      @keyframes blink {
-        50% {
-          opacity: 0;
-        }
-      }
-
-      /* =========================
-   MESSAGE CARDS
-========================= */
-      .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 22px;
-        margin-top: 40px;
-      }
-      @media (max-width: 640px) {
-        .cards-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      .mcard {
-        padding: 30px 26px;
-        transition:
-          transform 0.45s var(--ease),
-          box-shadow 0.45s var(--ease);
-      }
-      .mcard:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 26px 70px -18px rgba(232, 180, 200, 0.22);
-      }
-      .mcard h3 {
-        font-size: 1.3rem;
-        margin-bottom: 12px;
-      }
-      .mcard p {
-        color: var(--ink-dim);
-        font-size: 0.95rem;
-        font-weight: 300;
-      }
-
-      /* =========================
-   RANDOM WISH
-========================= */
-      .wish-box {
-        text-align: center;
-        margin-top: 50px;
-        padding: 36px;
-      }
-      .wish-text {
-        font-family: var(--font-display);
-        font-style: italic;
-        font-size: 1.4rem;
-        min-height: 2.6em;
-      }
-      .btn-soft {
-        margin-top: 22px;
-        padding: 13px 28px;
-        border-radius: 999px;
-        border: 1px solid var(--glass-border);
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--ink);
-        font-size: 0.92rem;
-        transition:
-          transform 0.35s var(--ease),
-          background 0.35s;
-      }
-      .btn-soft:hover {
-        transform: translateY(-2px);
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      /* =========================
-   PHOTO UPLOAD
-========================= */
-      .photo-section {
-        text-align: center;
-      }
-      .upload-zone {
-        margin: 34px auto 0;
-        max-width: 420px;
-        padding: 40px 24px;
-        border: 1.5px dashed var(--glass-border);
-        border-radius: 24px;
-        transition:
-          border-color 0.3s,
-          background 0.3s;
-      }
-      .upload-zone:hover {
-        border-color: var(--accent-pink);
-        background: rgba(255, 255, 255, 0.03);
-      }
-      .upload-zone input[type="file"] {
-        display: none;
-      }
-      .upload-label {
-        display: inline-block;
-        margin-top: 14px;
-        padding: 12px 26px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid var(--glass-border);
-        font-size: 0.9rem;
-      }
-      .photo-card {
-        max-width: 340px;
-        margin: 30px auto 0;
-        padding: 16px;
-        display: none;
-      }
-      .photo-card.show {
-        display: block;
-      }
-      .photo-card img {
-        border-radius: 18px;
-        width: 100%;
-        object-fit: cover;
-        max-height: 420px;
-        animation: floaty 5s ease-in-out infinite;
-      }
-      @keyframes floaty {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-8px);
-        }
-      }
-      .photo-caption {
-        margin-top: 14px;
-        width: 100%;
-        background: transparent;
-        border: none;
-        color: var(--ink-dim);
-        text-align: center;
-        font-style: italic;
-        font-family: var(--font-display);
-        font-size: 1.05rem;
-        border-bottom: 1px solid transparent;
-      }
-      .photo-caption:focus {
-        border-bottom: 1px solid var(--glass-border);
-      }
-      .photo-actions {
-        margin-top: 16px;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-      }
-      .btn-tiny {
-        font-size: 0.8rem;
-        padding: 8px 16px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--glass-border);
-        color: var(--ink-dim);
-      }
-
-      /* =========================
-   BACKGROUND SELECTOR
-========================= */
-      .bg-select {
-        text-align: center;
-      }
-      .bg-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-        margin-top: 30px;
-      }
-      .bg-btn {
-        padding: 11px 20px;
-        border-radius: 999px;
-        border: 1px solid var(--glass-border);
-        background: rgba(255, 255, 255, 0.04);
-        color: var(--ink-dim);
-        font-size: 0.88rem;
-        transition: all 0.3s;
-      }
-      .bg-btn.active,
-      .bg-btn:hover {
-        color: var(--ink);
-        background: rgba(255, 255, 255, 0.1);
-        border-color: var(--accent-pink);
-      }
-      .bg-upload-row {
-        margin-top: 26px;
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      /* =========================
-   MUSIC PLAYER
-========================= */
-      .music-card {
-        padding: 34px;
-        text-align: center;
-      }
-      .eq {
-        display: flex;
-        gap: 4px;
-        justify-content: center;
-        align-items: flex-end;
-        height: 28px;
-        margin: 0 auto 18px;
-      }
-      .eq span {
-        width: 4px;
-        background: var(--accent-pink);
-        border-radius: 2px;
-        height: 6px;
-        animation: eqmove 1.2s ease-in-out infinite;
-      }
-      .eq span:nth-child(2) {
-        animation-delay: 0.15s;
-      }
-      .eq span:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .eq span:nth-child(4) {
-        animation-delay: 0.45s;
-      }
-      .eq span:nth-child(5) {
-        animation-delay: 0.6s;
-      }
-      @keyframes eqmove {
-        0%,
-        100% {
-          height: 6px;
-        }
-        50% {
-          height: 24px;
-        }
-      }
-      .eq.paused span {
-        animation-play-state: paused;
-        height: 6px;
-      }
-      .player-controls {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        justify-content: center;
-        margin-top: 18px;
-      }
-      .play-btn {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: var(--accent-pink);
-        border: none;
-        color: var(--bg-deep);
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .progress-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 20px;
-        font-size: 0.75rem;
-        color: var(--ink-dim);
-      }
-      .progress-bar {
-        flex: 1;
-        height: 4px;
-        border-radius: 2px;
-        background: rgba(255, 255, 255, 0.12);
-        position: relative;
-        overflow: hidden;
-      }
-      .progress-fill {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        background: var(--accent-pink);
-        width: 0%;
-        transition: width 0.3s;
-      }
-      .vol-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 14px;
-        justify-content: center;
-      }
-      .vol-row input[type="range"] {
-        width: 120px;
-      }
-      #yt-player {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      /* =========================
-   CLOCK
-========================= */
-      .clock-card {
-        text-align: center;
-        padding: 40px;
-      }
-      .clock-time {
-        font-family: var(--font-display);
-        font-size: clamp(2.6rem, 8vw, 3.6rem);
-        letter-spacing: 0.03em;
-      }
-      .clock-date {
-        margin-top: 8px;
-        color: var(--ink-dim);
-        font-size: 0.95rem;
-      }
-
-      /* =========================
-   NIGHT MODE TOGGLE + SLEEP TIMER
-========================= */
-      .controls-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        margin-top: 40px;
-      }
-      .toggle-card,
-      .timer-card {
-        padding: 26px 30px;
-        text-align: center;
-        flex: 1;
-        min-width: 230px;
-      }
-      .switch {
-        position: relative;
-        display: inline-block;
-        width: 50px;
-        height: 28px;
-        margin-top: 14px;
-      }
-      .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-      .slider-toggle {
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 999px;
-        transition: 0.3s;
-      }
-      .slider-toggle::before {
-        content: "";
-        position: absolute;
-        width: 22px;
-        height: 22px;
-        left: 3px;
-        top: 3px;
-        background: var(--moon);
-        border-radius: 50%;
-        transition: 0.3s;
-      }
-      .switch input:checked + .slider-toggle {
-        background: var(--accent-pink);
-      }
-      .switch input:checked + .slider-toggle::before {
-        transform: translateX(22px);
-      }
-      .timer-opts {
-        display: flex;
-        gap: 8px;
-        justify-content: center;
-        margin-top: 14px;
-        flex-wrap: wrap;
-      }
-      .timer-opts button {
-        padding: 8px 14px;
-        border-radius: 999px;
-        border: 1px solid var(--glass-border);
-        background: rgba(255, 255, 255, 0.04);
-        color: var(--ink-dim);
-        font-size: 0.82rem;
-      }
-      .timer-display {
-        margin-top: 14px;
-        font-family: var(--font-display);
-        font-size: 1.6rem;
-        color: var(--accent-gold);
-        min-height: 1.4em;
-      }
-
-      /* =========================
-   SECRET MESSAGE
-========================= */
-      .secret-card {
-        text-align: center;
-        padding: 44px;
-      }
-      .secret-reveal {
-        margin-top: 24px;
-        max-height: 0;
-        overflow: hidden;
-        transition:
-          max-height 0.8s var(--ease),
-          opacity 0.6s;
-        opacity: 0;
-      }
-      .secret-reveal.open {
-        max-height: 200px;
-        opacity: 1;
-      }
-      .secret-reveal p {
-        font-family: var(--font-display);
-        font-style: italic;
-        font-size: 1.3rem;
-        color: var(--accent-pink);
-        padding-top: 10px;
-      }
-
-      /* =========================
-   HEARTS
-========================= */
-      .heart {
-        position: fixed;
-        z-index: 40;
-        pointer-events: none;
-        color: var(--accent-pink);
-        font-size: 20px;
-        will-change: transform, opacity;
-      }
-      .send-heart-row {
-        text-align: center;
-        margin-top: 50px;
-      }
-
-      /* =========================
-   FINAL SECTION
-========================= */
-      .final-section {
-        text-align: center;
-        padding: 130px 24px 100px;
-      }
-      .final-section h2 {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-style: italic;
-      }
-      .final-section p {
-        margin-top: 18px;
-        max-width: 460px;
-        margin-left: auto;
-        margin-right: auto;
-        color: var(--ink-dim);
-        font-weight: 300;
-      }
-      .btn-close-night {
-        margin-top: 38px;
-        padding: 16px 38px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid var(--glass-border);
-      }
-      .dim-overlay {
-        position: fixed;
-        inset: 0;
-        background: #000;
-        opacity: 0;
-        pointer-events: none;
-        z-index: 200;
-        transition: opacity 2.2s var(--ease);
-      }
-      .dim-overlay.active {
-        opacity: 0.82;
-        pointer-events: auto;
-      }
-      .dim-text {
-        position: fixed;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--accent-gold);
-        font-family: var(--font-display);
-        font-style: italic;
-        font-size: 1.8rem;
-        opacity: 0;
-        transition: opacity 1.5s var(--ease) 1s;
-        z-index: 201;
-        pointer-events: none;
-        text-align: center;
-        padding: 20px;
-      }
-      .dim-overlay.active + .dim-text {
-        opacity: 1;
-      }
-
-      /* =========================
-   RESET / FOOTER
-========================= */
-      .reset-row {
-        text-align: center;
-        margin-top: 60px;
-      }
-      footer {
-        text-align: center;
-        padding: 50px 24px 70px;
-        color: var(--ink-dim);
-        font-size: 0.85rem;
-        position: relative;
-        z-index: 1;
-      }
-      footer .heart-note {
-        margin-top: 6px;
-        font-size: 0.75rem;
-        opacity: 0.7;
-      }
-
-      /* =========================
-   MODALS
-========================= */
-      .modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(6, 8, 20, 0.7);
-        backdrop-filter: blur(6px);
-        z-index: 300;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        visibility: hidden;
-        transition:
-          opacity 0.35s,
-          visibility 0.35s;
-        padding: 20px;
-      }
-      .modal-backdrop.open {
-        opacity: 1;
-        visibility: visible;
-      }
-      .modal-box {
-        max-width: 380px;
-        width: 100%;
-        padding: 32px;
-        text-align: center;
-        transform: translateY(14px);
-        transition: transform 0.35s var(--ease);
-      }
-      .modal-backdrop.open .modal-box {
-        transform: translateY(0);
-      }
-      .modal-box h3 {
-        font-size: 1.3rem;
-        margin-bottom: 12px;
-        font-style: italic;
-      }
-      .modal-box p {
-        color: var(--ink-dim);
-        font-size: 0.92rem;
-      }
-      .modal-actions {
-        margin-top: 22px;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-      }
-      .modal-actions button {
-        padding: 10px 22px;
-        border-radius: 999px;
-        font-size: 0.85rem;
-        border: 1px solid var(--glass-border);
-      }
-      .modal-actions .confirm {
-        background: var(--accent-pink);
-        color: var(--bg-deep);
-        border: none;
-      }
-      .modal-actions .cancel {
-        background: transparent;
-        color: var(--ink-dim);
-      }
-
-      /* =========================
-   MOUSE EFFECTS (desktop only, injected class)
-========================= */
-      .has-fine-pointer .cursor-glow {
-        position: fixed;
-        width: 220px;
-        height: 220px;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 30;
-        background: radial-gradient(
-          circle,
-          rgba(232, 180, 200, 0.1),
-          transparent 70%
-        );
-        transform: translate(-50%, -50%);
-        transition: opacity 0.3s;
-      }
-      .particle-trail {
-        position: fixed;
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: var(--accent-gold);
-        pointer-events: none;
-        z-index: 31;
-        opacity: 0.7;
-      }
-      .ripple {
-        position: fixed;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: 1px solid var(--accent-pink);
-        pointer-events: none;
-        z-index: 32;
-        transform: translate(-50%, -50%);
-        animation: rippleOut 0.7s var(--ease) forwards;
-      }
-      @keyframes rippleOut {
-        to {
-          width: 70px;
-          height: 70px;
-          opacity: 0;
-        }
-      }
-
-      /* Section reveal on scroll */
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition:
-          opacity 0.8s var(--ease),
-          transform 0.8s var(--ease);
-      }
-      .reveal.in {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          animation-duration: 0.001s !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.2s !important;
-        }
-      }
-      @media (max-width: 480px) {
-        .cards-grid {
-          gap: 16px;
-        }
-        section {
-          padding: 80px 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- =========================
-     BACKGROUND LAYERS
-========================= -->
-    <canvas id="sky-canvas" aria-hidden="true"></canvas>
-    <div class="moon-glow" aria-hidden="true"></div>
-    <div class="clouds" id="clouds-layer" aria-hidden="true"></div>
-    <div class="dim-overlay" id="dimOverlay" aria-hidden="true"></div>
-    <div class="dim-text" aria-hidden="true">Ngủ ngon nhé... 🌙</div>
-
-    <!-- =========================
-     NAVIGATION
-========================= -->
-    <nav class="floatnav" aria-label="Điều hướng chính">
-      <button
-        class="nav-toggle"
-        id="navToggle"
-        aria-expanded="false"
-        aria-controls="navLinks"
-        aria-label="Mở menu"
-      >
-        ☰
-      </button>
-      <div class="nav-links" id="navLinks">
-        <a href="#hero">Trang chủ</a>
-        <a href="#loi-chuc">Lời chúc</a>
-        <a href="#hinh-anh">Hình ảnh</a>
-        <a href="#am-thanh">Âm thanh</a>
-        <br /><a href="#thu-gian">Thư giãn</a>
-        <a href="#bi-mat">Bí mật</a>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Điều hướng trên điện thoại" inert>
+      <div class="mobile-menu-inner">
+        <p class="mobile-menu-label">Một hành trình nhỏ</p>
+        <a href="#story" class="mobile-nav-link"><span>01</span> Câu chuyện của chúng ta</a>
+        <a href="#memories" class="mobile-nav-link"><span>02</span> Những kỷ niệm</a>
+        <a href="#letter" class="mobile-nav-link"><span>03</span> Lá thư dưới trăng</a>
+        <a href="#universe" class="mobile-nav-link"><span>04</span> Vũ trụ của chúng ta</a>
+        <a href="#music" class="mobile-nav-link"><span>05</span> Âm nhạc của riêng mình</a>
+        <a href="#special" class="mobile-nav-link"><span>06</span> Điều anh muốn nói</a>
+        <div class="mobile-menu-note">
+          <svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg>
+          <span>Mỗi kỷ niệm là một vì sao không bao giờ tắt.</span>
+        </div>
       </div>
     </nav>
+  </header>
 
-    <!-- =========================
-     HERO SECTION
-========================= -->
-    <section class="hero" id="hero">
-      <h1>🌙 Chúc Ngủ Ngon 🌙</h1>
-      <p class="subtitle">
-        Khép lại một ngày dài, hãy để những mệt mỏi ngủ yên cùng màn đêm.
-      </p>
-      <button class="btn-open" id="openBtn">✨ Mở lời chúc ✨</button>
-      <span class="scroll-hint">cuộn xuống, hoặc chạm vào nút phía trên</span>
+  <main id="main-content">
+    <section class="hero section" id="home" aria-labelledby="hero-title">
+      <div class="hero-stars" aria-hidden="true">
+        <span class="hero-star star-a">✦</span>
+        <span class="hero-star star-b">✧</span>
+        <span class="hero-star star-c">✦</span>
+        <span class="hero-star star-d">✧</span>
+        <span class="hero-star star-e">✦</span>
+      </div>
+
+      <button class="moon-button" id="moon-button" type="button" aria-label="Chạm vào mặt trăng để gửi một điều ước" title="Gửi một điều ước">
+        <span class="moon-orbit moon-orbit-one" aria-hidden="true"></span>
+        <span class="moon-orbit moon-orbit-two" aria-hidden="true"></span>
+        <span class="moon-halo" aria-hidden="true"></span>
+        <svg class="moon-art" viewBox="0 0 420 420" role="img" aria-label="Mặt trăng lưỡi liềm lung linh giữa bầu trời sao">
+          <defs>
+            <radialGradient id="moonDark" cx="35%" cy="35%" r="70%">
+              <stop offset="0" stop-color="#353962"/>
+              <stop offset=".7" stop-color="#1b2044"/>
+              <stop offset="1" stop-color="#0e1230"/>
+            </radialGradient>
+            <radialGradient id="moonLight" cx="32%" cy="30%" r="78%">
+              <stop offset="0" stop-color="#fffef6"/>
+              <stop offset=".32" stop-color="#f4f1ff"/>
+              <stop offset=".68" stop-color="#d8d6f2"/>
+              <stop offset=".9" stop-color="#b2b1d7"/>
+              <stop offset="1" stop-color="#898ab9"/>
+            </radialGradient>
+            <radialGradient id="craterShade" cx="35%" cy="30%" r="70%">
+              <stop offset="0" stop-color="#8d8daf" stop-opacity=".75"/>
+              <stop offset=".55" stop-color="#b8b5d6" stop-opacity=".4"/>
+              <stop offset=".82" stop-color="#f5f2ff" stop-opacity=".8"/>
+              <stop offset="1" stop-color="#b8b5d6" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="craterDeep" cx="65%" cy="70%" r="70%">
+              <stop offset="0" stop-color="#77799f" stop-opacity=".6"/>
+              <stop offset=".7" stop-color="#a3a1c4" stop-opacity=".25"/>
+              <stop offset="1" stop-color="#d9d6ef" stop-opacity=".65"/>
+            </radialGradient>
+            <filter id="moonGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="10" result="blur"/>
+              <feColorMatrix in="blur" type="matrix" values="0.7 0 0 0 0.15  0 0.7 0 0 0.18  0 0 1 0 0.45  0 0 0 .75 0" result="colored"/>
+              <feMerge><feMergeNode in="colored"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="moonTexture" x="-10%" y="-10%" width="120%" height="120%">
+              <feTurbulence type="fractalNoise" baseFrequency=".035 .055" numOctaves="4" seed="17" result="noise"/>
+              <feColorMatrix in="noise" type="saturate" values="0" result="gray"/>
+              <feComponentTransfer in="gray" result="faded">
+                <feFuncA type="linear" slope=".13"/>
+              </feComponentTransfer>
+              <feBlend in="SourceGraphic" in2="faded" mode="soft-light"/>
+            </filter>
+            <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="8" dy="12" stdDeviation="12" flood-color="#060819" flood-opacity=".65"/>
+            </filter>
+            <mask id="crescentMask">
+              <rect width="420" height="420" fill="white"/>
+              <circle cx="252" cy="171" r="137" fill="black"/>
+            </mask>
+            <clipPath id="moonClip"><circle cx="210" cy="210" r="137"/></clipPath>
+          </defs>
+          <circle cx="210" cy="210" r="137" fill="url(#moonDark)" opacity=".92"/>
+          <g mask="url(#crescentMask)" filter="url(#moonGlow)">
+            <circle cx="210" cy="210" r="137" fill="url(#moonLight)"/>
+            <g clip-path="url(#moonClip)" filter="url(#moonTexture)">
+              <circle cx="151" cy="179" r="21" fill="url(#craterShade)"/>
+              <circle cx="126" cy="239" r="31" fill="url(#craterDeep)"/>
+              <circle cx="172" cy="292" r="17" fill="url(#craterShade)"/>
+              <circle cx="110" cy="192" r="10" fill="url(#craterDeep)"/>
+              <circle cx="174" cy="139" r="9" fill="url(#craterShade)"/>
+              <circle cx="101" cy="273" r="8" fill="url(#craterShade)"/>
+              <circle cx="154" cy="326" r="6" fill="url(#craterDeep)"/>
+              <circle cx="193" cy="216" r="12" fill="url(#craterShade)" opacity=".55"/>
+              <path d="M84 209c21-11 40-12 56-7M111 308c14 6 28 7 40 4M139 118c13 2 25 7 35 14" fill="none" stroke="#f8f6ff" stroke-opacity=".24" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <circle cx="210" cy="210" r="136" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="1.5"/>
+          </g>
+          <g class="moon-sparkles" fill="#fff9dc">
+            <circle cx="76" cy="142" r="2.2"/>
+            <circle cx="324" cy="260" r="1.8"/>
+            <circle cx="293" cy="88" r="2.4"/>
+            <path d="m350 155 2.2 6.2 6.2 2.2-6.2 2.2-2.2 6.2-2.2-6.2-6.2-2.2 6.2-2.2Z"/>
+            <path d="m76 312 1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6Z"/>
+          </g>
+        </svg>
+        <span class="moon-orbit-star orbit-star-one" aria-hidden="true">✦</span>
+        <span class="moon-orbit-star orbit-star-two" aria-hidden="true">✧</span>
+        <span class="moon-orbit-star orbit-star-three" aria-hidden="true">✦</span>
+        <span class="moon-wish-hint">Chạm để gửi điều ước</span>
+      </button>
+
+      <div class="hero-content shell">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow reveal">
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            Một tình yêu, một vũ trụ
+          </p>
+          <h1 class="hero-title" id="hero-title">
+            <span class="title-line title-line-one reveal">Tình Yêu</span>
+            <span class="title-line title-line-two reveal">Dưới Ánh Trăng<span class="title-dot">.</span></span>
+          </h1>
+          <p class="hero-subtitle reveal">Giữa hàng triệu vì sao, anh vẫn tìm thấy một ánh sáng mang tên em.</p>
+          <div class="hero-actions reveal">
+            <a class="button button-primary magnetic" href="#story">
+              <span>Khám phá thế giới của chúng ta</span>
+              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <button class="button button-ghost magnetic" id="hero-letter-button" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg>
+              <span>Mở lá thư của anh</span>
+            </button>
+          </div>
+          <div class="hero-meta reveal" aria-label="Những điều đặc biệt của câu chuyện">
+            <span><strong>01</strong> trái tim</span>
+            <span class="meta-divider" aria-hidden="true"></span>
+            <span><strong>∞</strong> kỷ niệm</span>
+            <span class="meta-divider" aria-hidden="true"></span>
+            <span><strong>Vĩnh cửu</strong> yêu thương</span>
+          </div>
+        </div>
+
+        <aside class="hero-note reveal" aria-label="Lời nhắn nhỏ dưới trăng">
+          <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
+          <p>“Em là điều đẹp nhất<br>mà bầu trời từng trao tặng anh.”</p>
+          <span>— Gửi em, dưới ánh trăng</span>
+        </aside>
+      </div>
+
+      <a class="scroll-cue" href="#story" aria-label="Cuộn xuống câu chuyện tình yêu">
+        <span class="scroll-cue-text">Bắt đầu hành trình</span>
+        <span class="scroll-cue-line" aria-hidden="true"><span></span></span>
+      </a>
     </section>
 
-    <div class="main-content" id="mainContent">
-      <!-- =========================
-       PERSONALIZED MESSAGE
-  ========================= -->
-      <section id="loi-chuc">
-        <div class="wrap">
-          <div class="glass personalize reveal" style="padding: 48px 32px">
-            <h2>Gửi đến người người tôi yêu</h2>
-            <div class="name-input-row">
-              <label
-                for="nameInput"
-                class="visually-hidden"
-                style="position: absolute; left: -9999px"
-                >Nhập tên người nhận</label
-              >
-              <input
-                type="text"
-                id="nameInput"
-                placeholder="Nhập tên người nhận..."
-                autocomplete="off"
-              />
+    <section class="story section" id="story" aria-labelledby="story-title">
+      <div class="section-ornament ornament-left" aria-hidden="true">✦</div>
+      <div class="section-ornament ornament-right" aria-hidden="true">✧</div>
+      <div class="shell">
+        <header class="section-heading centered reveal">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Chương mở đầu <span class="eyebrow-line" aria-hidden="true"></span></p>
+          <h2 id="story-title">Câu chuyện của <em>chúng mình</em></h2>
+          <p class="section-intro">Không phải mọi tình yêu đều bắt đầu bằng một cú chạm mắt. Có những tình yêu bắt đầu bằng một khoảnh khắc rất nhỏ, rồi ở lại trong tim suốt cả cuộc đời.</p>
+        </header>
+
+        <div class="story-layout">
+          <article class="story-prose glass-card reveal">
+            <div class="story-prose-header">
+              <span class="chapter-number">01</span>
+              <div>
+                <p class="small-label">Nơi mọi thứ bắt đầu</p>
+                <h3>Một buổi tối, một ánh mắt</h3>
+              </div>
             </div>
-            <div
-              class="dynamic-greeting"
-              id="dynamicGreeting"
-              aria-live="polite"
-            >
-              🌙 Chúc em ngủ ngon
+            <p>Trăng hôm ấy tròn và sáng đến lạ kỳ. Anh nhớ em không nói gì nhiều, chỉ mỉm cười khi nghe anh kể chuyện. Nhưng chính nụ cười ấy đã khiến cả thành phố trở nên yên tĩnh hơn, còn nhịp tim anh thì lại hối hả.</p>
+            <p>Từ đêm đó, mỗi lần ngước lên trời, anh đều có một lý do để mỉm cười. Vì giữa vô vàn ngôi sao, anh đã tìm thấy em — người bạn đồng hành, người khiến những ngày bình thường trở nên đáng nhớ.</p>
+            <div class="story-signature">
+              <span class="signature-line" aria-hidden="true"></span>
+              <span>Và thế là, chúng mình bắt đầu.</span>
+              <svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg>
             </div>
-            <div
-              class="typewriter-box"
-              id="typewriterBox"
-              aria-live="polite"
-            ></div>
+          </article>
+
+          <aside class="story-visual reveal" aria-label="Hành trình tình yêu qua những con số">
+            <div class="love-orbit" aria-hidden="true">
+              <div class="orbit-ring orbit-ring-one"></div>
+              <div class="orbit-ring orbit-ring-two"></div>
+              <div class="orbit-ring orbit-ring-three"></div>
+              <div class="orbit-heart">
+                <svg viewBox="0 0 24 24"><use href="#icon-heart"/></svg>
+              </div>
+              <span class="orbit-dot orbit-dot-one"></span>
+              <span class="orbit-dot orbit-dot-two"></span>
+              <span class="orbit-dot orbit-dot-three"></span>
+            </div>
+            <div class="story-stats">
+              <div class="story-stat">
+                <strong class="counter" data-target="365" data-suffix="+">0</strong>
+                <span>ngày có em bên cạnh</span>
+              </div>
+              <div class="story-stat">
+                <strong class="counter" data-target="1000" data-suffix="+">0</strong>
+                <span>lý do để mỉm cười</span>
+              </div>
+              <div class="story-stat">
+                <strong>∞</strong>
+                <span>điều còn muốn cùng em làm</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="timeline-wrap">
+          <header class="timeline-heading reveal">
+            <span class="small-label">Dấu chân thời gian</span>
+            <h3>Những khoảnh khắc mình giữ lại</h3>
+          </header>
+          <ol class="timeline" aria-label="Timeline các kỷ niệm quan trọng">
+            <li class="timeline-item reveal">
+              <span class="timeline-marker" aria-hidden="true"><svg class="icon"><use href="#icon-star"/></svg></span>
+              <span class="timeline-date">Ngày đầu tiên</span>
+              <div class="timeline-card glass-card">
+                <span class="timeline-index">01</span>
+                <h4>Ánh mắt đầu tiên</h4>
+                <p>Một lời chào nhỏ, một nụ cười e thẹn, và một điều gì đó trong lòng anh thì thầm: “Là em rồi.”</p>
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <span class="timeline-marker" aria-hidden="true"><svg class="icon"><use href="#icon-heart"/></svg></span>
+              <span class="timeline-date">Buổi hẹn thứ hai</span>
+              <div class="timeline-card glass-card">
+                <span class="timeline-index">02</span>
+                <h4>Bàn tay nắm chặt</h4>
+                <p>Đi dưới mưa, cùng che một chiếc ô. Anh không nhớ mình có ướt hay không, chỉ nhớ bàn tay em thật ấm.</p>
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <span class="timeline-marker" aria-hidden="true"><svg class="icon"><use href="#icon-moon"/></svg></span>
+              <span class="timeline-date">Một đêm trăng sáng</span>
+              <div class="timeline-card glass-card">
+                <span class="timeline-index">03</span>
+                <h4>Lời yêu đầu tiên</h4>
+                <p>Dưới ánh trăng, ba tiếng “anh yêu em” được nói ra thật khẽ, nhưng vang vọng trong anh đến tận bây giờ.</p>
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <span class="timeline-marker" aria-hidden="true"><svg class="icon"><use href="#icon-infinity"/></svg></span>
+              <span class="timeline-date">Và những ngày sau</span>
+              <div class="timeline-card glass-card">
+                <span class="timeline-index">04</span>
+                <h4>Hành trình vẫn tiếp tục</h4>
+                <p>Chúng mình học cách yêu, học cách lắng nghe, học cách giữ những điều giản dị và làm cho chúng đặc biệt.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <blockquote class="story-quote reveal">
+          <svg class="quote-mark" aria-hidden="true">“</svg>
+          <p>Yêu em không phải là điều duy nhất anh làm mỗi ngày.<br>Nhưng đó là điều tuyệt vời nhất trong tất cả.</p>
+          <cite>— Người luôn chọn em</cite>
+          <span class="quote-stars" aria-hidden="true">✦ · ✧ · ✦</span>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="memories section" id="memories" aria-labelledby="memories-title">
+      <div class="shell">
+        <header class="section-heading split-heading reveal">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Kho tàng của riêng mình</p>
+            <h2 id="memories-title">Những kỷ niệm <em>lung linh</em></h2>
+          </div>
+          <p class="section-intro">Mỗi bức ảnh là một vì sao nhỏ. Hãy thêm vào đây những khoảnh khắc các bạn muốn giữ mãi — mọi thứ chỉ được lưu trên thiết bị này.</p>
+        </header>
+
+        <div class="memory-toolbar glass-card reveal">
+          <div class="storage-summary">
+            <span class="storage-icon" aria-hidden="true"><svg class="icon"><use href="#icon-image"/></svg></span>
+            <div>
+              <strong id="memory-count">Đang mở kho kỷ niệm…</strong>
+              <span id="storage-status">Ảnh của bạn ở lại trên thiết bị, không gửi đi đâu cả.</span>
+            </div>
+          </div>
+          <div class="memory-toolbar-actions">
+            <button class="button button-small button-primary" id="upload-trigger" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#icon-upload"/></svg>
+              <span>Thêm kỷ niệm</span>
+            </button>
+            <button class="button button-small button-ghost" id="slideshow-trigger" type="button" disabled>
+              <svg class="icon" aria-hidden="true"><use href="#icon-slideshow"/></svg>
+              <span>Trình chiếu</span>
+            </button>
+            <button class="icon-button danger-hover" id="clear-gallery" type="button" aria-label="Xóa toàn bộ thư viện kỷ niệm" title="Xóa toàn bộ thư viện" disabled>
+              <svg class="icon" aria-hidden="true"><use href="#icon-trash"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="upload-zone reveal" id="upload-zone" tabindex="0" role="button" aria-label="Chọn hoặc kéo thả ảnh để thêm kỷ niệm" aria-describedby="upload-help">
+          <input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+          <div class="upload-orbit" aria-hidden="true">
+            <span class="upload-orbit-ring"></span>
+            <span class="upload-orbit-icon"><svg class="icon"><use href="#icon-upload"/></svg></span>
+            <span class="upload-orbit-star">✦</span>
+          </div>
+          <h3>Đặt những khoảnh khắc của bạn vào đây</h3>
+          <p id="upload-help">Chọn ảnh từ máy tính hoặc thư viện điện thoại, hoặc kéo thả trực tiếp vào đây.</p>
+          <div class="upload-badges" aria-label="Định dạng và dung lượng được hỗ trợ">
+            <span>JPG</span><span>PNG</span><span>WEBP</span><span>Tối đa 5 MB / ảnh</span><span>Tối đa 30 ảnh</span>
+          </div>
+          <span class="upload-privacy"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Riêng tư tuyệt đối — không tải ảnh lên máy chủ</span>
+          <div class="drop-overlay" aria-hidden="true"><span>Thả ảnh xuống đây</span></div>
+        </div>
+
+        <div class="gallery-heading reveal">
+          <div>
+            <span class="small-label">Bộ sưu tập của chúng mình</span>
+            <h3>Những ngày đáng nhớ</h3>
+          </div>
+          <div class="gallery-filters" role="group" aria-label="Sắp xếp thư viện ảnh">
+            <button class="filter-button is-active" type="button" data-sort="newest" aria-pressed="true">Mới nhất</button>
+            <button class="filter-button" type="button" data-sort="oldest" aria-pressed="false">Cũ nhất</button>
+            <button class="filter-button" type="button" data-sort="title" aria-pressed="false">Theo tên</button>
+          </div>
+        </div>
+
+        <div class="photo-grid" id="photo-grid" aria-live="polite" aria-label="Thư viện kỷ niệm"></div>
+
+        <div class="gallery-empty" id="gallery-empty">
+          <span class="empty-moon" aria-hidden="true"></span>
+          <h3>Kỷ niệm đầu tiên đang chờ bạn</h3>
+          <p>Một bức ảnh cũ, một buổi hoàng hôn, hay chỉ là khoảnh khắc các bạn cười thật tươi — tất cả đều xứng đáng được giữ lại.</p>
+          <button class="button button-ghost" id="empty-upload-trigger" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#icon-image"/></svg>
+            Chọn bức ảnh đầu tiên
+          </button>
+        </div>
+
+        <p class="storage-note reveal"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Ảnh được tối ưu và lưu trong IndexedDB của trình duyệt. Xóa dữ liệu trình duyệt cũng sẽ xóa thư viện; hãy sao lưu các bức ảnh gốc ở nơi an toàn.</p>
+      </div>
+    </section>
+
+    <section class="letter section" id="letter" aria-labelledby="letter-title">
+      <div class="letter-glow" aria-hidden="true"></div>
+      <div class="shell letter-layout">
+        <div class="letter-copy reveal">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Gửi em, vào một đêm trăng</p>
+          <h2 id="letter-title">Lá thư anh viết<br><em>giữa những vì sao</em></h2>
+          <p>Có những lời khó nói khi đứng trước nhau. Anh viết chúng ra đây, để em có thể đọc lại mỗi khi nhớ anh, và mỗi khi cần nhớ rằng mình được yêu rất nhiều.</p>
+          <button class="button button-primary magnetic" id="letter-trigger" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#icon-envelope"/></svg>
+            <span>Mở lá thư của anh</span>
+          </button>
+          <span class="letter-hint">Một lá thư nhỏ, gửi trọn trái tim.</span>
+        </div>
+
+        <div class="envelope-scene reveal">
+          <span class="envelope-star envelope-star-one" aria-hidden="true">✦</span>
+          <span class="envelope-star envelope-star-two" aria-hidden="true">✧</span>
+          <span class="envelope-star envelope-star-three" aria-hidden="true">✦</span>
+          <span class="envelope-heart envelope-heart-one" aria-hidden="true">♥</span>
+          <span class="envelope-heart envelope-heart-two" aria-hidden="true">♥</span>
+          <div class="envelope-shadow" aria-hidden="true"></div>
+          <button class="envelope" id="envelope-button" type="button" aria-label="Mở lá thư tình yêu">
+            <span class="envelope-back" aria-hidden="true"></span>
+            <span class="letter-paper" aria-hidden="true">
+              <span class="paper-to">Gửi em,</span>
+              <span class="paper-line"></span>
+              <span class="paper-line short"></span>
+              <span class="paper-heart">♥</span>
+            </span>
+            <span class="envelope-front" aria-hidden="true"></span>
+            <span class="envelope-flap" aria-hidden="true"></span>
+            <span class="envelope-seal" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-heart"/></svg></span>
+          </button>
+          <span class="envelope-caption" aria-hidden="true">Chạm vào phong bì để mở</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="universe section" id="universe" aria-labelledby="universe-title">
+      <div class="shell">
+        <header class="section-heading centered reveal">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Một vũ trụ nhỏ, thật riêng mình</p>
+          <h2 id="universe-title">Vũ trụ của <em>chúng ta</em></h2>
+          <p class="section-intro">Chạm vào những ngôi sao sáng. Mỗi ngôi sao giấu một lời nhắn, một lời hứa, hoặc một điều anh muốn em luôn nhớ.</p>
+        </header>
+
+        <div class="universe-console glass-card reveal">
+          <div class="universe-stage" id="universe-stage" aria-label="Bản đồ chòm sao tương tác">
+            <div class="universe-nebula" aria-hidden="true"></div>
+            <svg class="constellation-lines" id="constellation-lines" viewBox="0 0 800 520" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#bda7ff" stop-opacity=".15"/>
+                  <stop offset=".5" stop-color="#fff" stop-opacity=".65"/>
+                  <stop offset="1" stop-color="#ffc7e8" stop-opacity=".2"/>
+                </linearGradient>
+                <filter id="lineGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="2" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <g id="constellation-paths" fill="none" stroke="url(#lineGradient)" stroke-width="1.3" filter="url(#lineGlow)"></g>
+            </svg>
+
+            <div class="celestial-center" aria-hidden="true">
+              <span class="center-halo"></span>
+              <span class="center-heart"><svg viewBox="0 0 24 24"><use href="#icon-heart"/></svg></span>
+              <span class="center-label">CHÚNG TA</span>
+            </div>
+
+            <button class="star-node" type="button" style="--x:16%;--y:22%;--delay:0s" data-message="Em là ngôi sao đầu tiên anh thấy mỗi tối, và cũng là ngôi sao cuối cùng anh nghĩ đến trước khi chìm vào giấc ngủ." aria-label="Ngôi sao thứ nhất: mở lời nhắn">
+              <span class="star-core"></span><span class="star-label">Ngôi sao đầu tiên</span>
+            </button>
+            <button class="star-node" type="button" style="--x:38%;--y:13%;--delay:.7s" data-message="Nếu được chọn lại, anh vẫn sẽ chọn em — trong hàng triệu khả năng, cùng một khoảnh khắc, và trong mỗi kiếp sống." aria-label="Ngôi sao lựa chọn: mở lời nhắn">
+              <span class="star-core"></span><span class="star-label">Lựa chọn</span>
+            </button>
+            <button class="star-node" type="button" style="--x:66%;--y:20%;--delay:1.3s" data-message="Anh hứa sẽ ở bên em không chỉ trong những ngày trăng tròn, mà cả trong những đêm bão giông nhất." aria-label="Ngôi sao lời hứa: mở lời nhắn">
+              <span class="star-core"></span><span class="star-label">Lời hứa</span>
+            </button>
+            <button class="star-node" type="button" style="--x:84%;--y:43%;--delay:.4s" data-message="Những điều bình dị bên em — một tách trà, một câu chuyện cũ, một buổi chiều không làm gì cả — đều là hạnh phúc của anh." aria-label="Ngôi sao hạnh phúc: mở lời nhắn">
+              <span class="star-core"></span><span class="star-label">Hạnh phúc</span>
+            </button>
+            <button class="star-node" type="button" style="--x:70%;--y:76%;--delay:1.1s" data-message="Tương lai anh không cần thật xa hoa. Chỉ cần có em, có những tiếng cười, và một mái nhà luôn đợi nhau về." aria-label="Ngôi sao tương lai: mở lời nhắn">
+              <span class="star-core"></span><span class="star-label">Tương lai</span>
+            </button>
+            <button class="star-node" type="button" style="--x:40%;--y:83%;--delay:1.7s" data-message="Cảm ơn em đã đến, đã ở lại, và đã biến một cuộc đời bình thường thành câu chuyện anh muốn kể mãi." aria-label="Ngôi sao biết ơn: mở lời nhắn">
+              <span class="star-core"></span><span class="star-label">Biết ơn</span>
+            </button>
+            <button class="star-node" type="button" style="--x:19%;--y:65%;--delay:.9s" data-message="Dù vũ trụ rộng lớn đến đâu, anh vẫn tin rằng có một khoảnh khắc rất đẹp đã dẫn bước em đến bên anh." aria-label="Ngôi sao định mệnh: mở lời nhắn">
+              <span class="star-core"></span><span class="star-label">Định mệnh</span>
+            </button>
+
+            <span class="mini-planet planet-pink" aria-hidden="true"><span></span></span>
+            <span class="mini-planet planet-blue" aria-hidden="true"><span></span></span>
+            <span class="mini-planet planet-gold" aria-hidden="true"><span></span></span>
+            <span class="mini-moon" aria-hidden="true"></span>
+            <span class="cosmic-dust dust-one" aria-hidden="true"></span>
+            <span class="cosmic-dust dust-two" aria-hidden="true"></span>
+            <span class="cosmic-dust dust-three" aria-hidden="true"></span>
           </div>
 
-          <!-- MESSAGE CARDS -->
-          <div class="cards-grid">
-            <div class="glass mcard reveal">
-              <h3>🌙 Một lời chúc nhỏ</h3>
-              <p>
-                Mong đêm nay đến với em thật nhẹ nhàng, để mỗi hơi thở đều là
-                một lần buông bỏ ưu phiền, và giấc ngủ đến êm như một lời thì
-                thầm.
-              </p>
+          <aside class="cosmic-message" aria-live="polite">
+            <span class="message-icon" aria-hidden="true"><svg class="icon"><use href="#icon-sparkles"/></svg></span>
+            <p class="small-label" id="cosmic-message-label">Lời nhắn từ một ngôi sao</p>
+            <p class="cosmic-message-text" id="cosmic-message-text">Chạm vào một ngôi sao sáng trên bản đồ. Có thể em sẽ tìm thấy một điều anh chưa kịp nói.</p>
+            <div class="message-footer">
+              <span id="cosmic-message-progress">0 / 7 ngôi sao đã khám phá</span>
+              <button class="text-button" id="random-star-button" type="button">Gửi em một ngôi sao <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></button>
             </div>
-            <div class="glass mcard reveal">
-              <h3>☁️ Hôm nay em đã rất cố gắng rồi</h3>
-              <p>
-                Dù ngày hôm nay có bao nhiêu điều chưa trọn vẹn, em vẫn đã đi
-                qua nó bằng tất cả những gì mình có. Giờ là lúc để nghỉ ngơi,
-                không cần cố gắng thêm gì nữa.
-              </p>
+            <div class="message-progress-track" aria-hidden="true"><span id="cosmic-progress-bar"></span></div>
+          </aside>
+        </div>
+
+        <div class="universe-legend reveal">
+          <span><i class="legend-dot visited"></i> Ngôi sao đã khám phá</span>
+          <span><i class="legend-dot"></i> Ngôi sao đang chờ</span>
+          <span><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg> Chạm hoặc dùng phím Tab để khám phá</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="music section" id="music" aria-labelledby="music-title">
+      <div class="music-aurora" aria-hidden="true"></div>
+      <div class="shell music-layout">
+        <div class="music-copy reveal">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Âm thanh của những đêm trăng</p>
+          <h2 id="music-title">Để âm nhạc <em>ôm trọn</em> kỷ niệm</h2>
+          <p>Ba bản nhạc không lời được tạo ngay trên thiết bị, nhẹ nhàng như ánh trăng. Bạn cũng có thể thêm những bài hát của riêng mình — không bài hát nào được tải lên máy chủ.</p>
+          <div class="music-features">
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-music"/></svg> Âm nhạc bản gốc</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Không tự động phát</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg> Dành riêng cho hai người</span>
+          </div>
+        </div>
+
+        <div class="music-player glass-card reveal" aria-label="Trình phát nhạc">
+          <div class="player-top">
+            <div class="album-art" id="album-art" aria-hidden="true">
+              <span class="album-halo"></span>
+              <span class="album-moon"></span>
+              <span class="album-star album-star-one">✦</span>
+              <span class="album-star album-star-two">✧</span>
+              <span class="album-ring"></span>
             </div>
-            <div class="glass mcard reveal">
-              <h3>🌅 Hẹn ngày mai EM nhé</h3>
-              <p>
-                Ngày mai sẽ là một trang mới, với nắng sớm, với những điều chưa
-                biết trước. Cứ ngủ thật ngon đi, để mai thức dậy còn đủ sức mà
-                mỉm cười.
-              </p>
-            </div>
-            <div class="glass mcard reveal">
-              <h3>💌 ANH cóa Một điều muốn nói</h3>
-              <p>
-                Có những ngày không cần nói gì nhiều, chỉ cần biết rằng có một
-                người đang mong em ngủ ngon là đủ ấm lòng rồi. Ngủ ngon nhé em.
-              </p>
+            <div class="track-details">
+              <p class="player-label"><span class="status-dot" id="player-status-dot"></span> <span id="player-status">Sẵn sàng lắng nghe</span></p>
+              <h3 id="track-title">Ánh Trăng Đầu Tiên</h3>
+              <p id="track-artist">Love Under The Moonlight · Nhạc không lời</p>
+              <div class="visualizer" id="visualizer" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
             </div>
           </div>
 
-          <!-- RANDOM WISH -->
-          <div class="glass wish-box reveal">
-            <p class="wish-text" id="wishText" aria-live="polite">
-              Chúc em có một giấc ngủ thật bình yên.
-            </p>
-            <button class="btn-soft" id="newWishBtn">
-              ✨ Nhận một lời chúc khác
+          <div class="player-progress">
+            <span id="current-time">0:00</span>
+            <input id="track-progress" type="range" min="0" max="180" value="0" step="0.1" aria-label="Tiến độ bài hát" aria-valuetext="0 phút 0 giây">
+            <span id="track-duration">3:00</span>
+          </div>
+
+          <div class="player-controls">
+            <button class="player-button" id="previous-track" type="button" aria-label="Bài hát trước" title="Bài trước">
+              <svg class="icon" aria-hidden="true"><use href="#icon-previous"/></svg>
+            </button>
+            <button class="play-button" id="play-toggle" type="button" aria-label="Phát nhạc" aria-pressed="false" title="Phát / Tạm dừng">
+              <svg class="icon icon-play" aria-hidden="true"><use href="#icon-play"/></svg>
+              <svg class="icon icon-pause" aria-hidden="true"><use href="#icon-pause"/></svg>
+            </button>
+            <button class="player-button" id="next-track" type="button" aria-label="Bài hát tiếp theo" title="Bài tiếp theo">
+              <svg class="icon" aria-hidden="true"><use href="#icon-next"/></svg>
             </button>
           </div>
 
-          <!-- SEND HEART -->
-          <div class="send-heart-row">
-            <button class="btn-soft" id="sendHeartBtn">
-              💗 Gửi một trái tim
+          <div class="player-secondary">
+            <button class="icon-button" id="mute-toggle" type="button" aria-label="Tắt tiếng" aria-pressed="false" title="Tắt / Bật tiếng">
+              <svg class="icon icon-volume" aria-hidden="true"><use href="#icon-volume"/></svg>
+              <svg class="icon icon-volume-off" aria-hidden="true"><use href="#icon-volume-off"/></svg>
             </button>
+            <input id="volume-control" type="range" min="0" max="100" value="65" aria-label="Âm lượng">
+            <span id="volume-value">65%</span>
           </div>
-        </div>
-      </section>
 
-      <!-- =========================
-       PHOTO UPLOAD
-  ========================= -->
-      <section id="hinh-anh">
-        <div class="wrap photo-section">
-          <div class="glass reveal" style="padding: 44px 30px">
-            <h2
-              style="font-size: clamp(1.6rem, 4vw, 2.2rem); font-style: italic"
-            >
-              🌷 Thêm một chút kỷ niệm vào đêm nay
-            </h2>
-            <div class="upload-zone">
-              <p style="color: var(--ink-dim); font-size: 0.9rem">
-                Chọn một tấm ảnh từ điện thoại hoặc máy tính
-              </p>
-              <label class="upload-label" for="photoInput">📷 Chọn ảnh</label>
-              <input type="file" id="photoInput" accept="image/*" />
-            </div>
-            <div class="photo-card glass" id="photoCard">
-              <img id="photoPreview" alt="Ảnh kỷ niệm do bạn tải lên" />
-              <input
-                type="text"
-                class="photo-caption"
-                id="photoCaption"
-                value="Khoảnh khắc nhỏ, bình yên thật lớn."
-                aria-label="Chú thích ảnh"
-              />
-              <div class="photo-actions">
-                <button class="btn-tiny" id="removePhotoBtn">🗑 Xóa ảnh</button>
-              </div>
-            </div>
-            <p
-              id="photoStatus"
-              style="
-                margin-top: 16px;
-                color: var(--accent-pink);
-                font-size: 0.9rem;
-                font-style: italic;
-              "
-            ></p>
+          <div class="playlist-heading">
+            <span>Danh sách nhạc</span>
+            <button class="text-button" id="add-music-trigger" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#icon-upload"/></svg> Thêm nhạc của bạn
+            </button>
+            <input id="audio-input" type="file" accept="audio/mpeg,audio/mp4,audio/wav,audio/ogg,audio/webm,.mp3,.m4a,.wav,.ogg,.webm" multiple hidden>
           </div>
+          <ol class="playlist" id="playlist" aria-label="Danh sách bài hát"></ol>
+          <p class="music-privacy">Nhạc bạn thêm được lưu cục bộ trong trình duyệt. Hãy chỉ chọn các tệp bạn có quyền sử dụng.</p>
         </div>
-      </section>
+      </div>
+      <audio id="audio-element" preload="metadata"></audio>
+    </section>
 
-      <!-- =========================
-       BACKGROUND SELECTOR
-  ========================= -->
-      <section>
-        <div class="wrap bg-select">
-          <div class="glass reveal" style="padding: 44px 30px">
-            <h2
-              style="font-size: clamp(1.6rem, 4vw, 2.2rem); font-style: italic"
-            >
-              Chọn không gian đêm của riêng em
-            </h2>
-            <div class="bg-buttons" role="group" aria-label="Chọn nền đêm">
-              <button class="bg-btn active" data-theme="galaxy">
-                🌌 Galaxy
-              </button>
-              <button class="bg-btn" data-theme="moon">🌙 Moon Night</button>
-              <button class="bg-btn" data-theme="purple">
-                💜 Purple Dream
-              </button>
-              <button class="bg-btn" data-theme="blue">🌃 Blue Night</button>
-              <button class="bg-btn" data-theme="garden">
-                🌸 Dream Garden
-              </button>
-            </div>
-            <div class="bg-upload-row">
-              <label class="upload-label" for="bgInput"
-                >🖼 Chọn hình nền từ điện thoại</label
-              >
-              <input type="file" id="bgInput" accept="image/*" />
-              <button class="btn-tiny" id="resetBgBtn">
-                ↩ Khôi phục nền mặc định
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================
-       MUSIC PLAYER
-  ========================= -->
-      <section id="am-thanh">
-        <div class="wrap">
-          <div class="glass music-card reveal">
-            <div class="eq paused" id="eqBars">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <h2 style="font-size: 1.5rem; font-style: italic">
-              🎵 Âm thanh của đêm
-            </h2>
-            <p
-              style="color: var(--ink-dim); font-size: 0.9rem; margin-top: 6px"
-            >
-              Nhấn phát để bắt đầu thư giãn.
-            </p>
-            <div class="player-controls">
-              <button class="play-btn" id="playBtn" aria-label="Phát nhạc">
-                ▶
-              </button>
-            </div>
-            <div class="progress-row">
-              <span id="curTime">0:00</span>
-              <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-              </div>
-              <span id="durTime">0:00</span>
-            </div>
-            <div class="vol-row">
-              <span aria-hidden="true">🔉</span>
-              <input
-                type="range"
-                id="volSlider"
-                min="0"
-                max="100"
-                value="60"
-                aria-label="Âm lượng"
-              />
-            </div>
-            <p
-              id="musicFallback"
-              style="
-                display: none;
-                margin-top: 16px;
-                color: var(--ink-dim);
-                font-size: 0.82rem;
-              "
-            >
-              ⚠️ Không thể tải nhạc lúc này. Em vẫn có thể tận hưởng không gian
-              yên tĩnh này theo cách riêng.
-            </p>
-            <div id="yt-player"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================
-       CLOCK
-  ========================= -->
-      <section>
-        <div class="wrap">
-          <div class="glass clock-card reveal">
-            <div class="clock-time" id="clockTime">--:--:--</div>
-            <div class="clock-date" id="clockDate"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================
-       NIGHT MODE + SLEEP TIMER
-  ========================= -->
-      <section id="thu-gian">
-        <div class="wrap controls-row">
-          <div class="glass toggle-card reveal">
-            <p>🌙 Chế độ ban đêm</p>
-            <label class="switch">
-              <input
-                type="checkbox"
-                id="nightModeToggle"
-                aria-label="Bật chế độ ban đêm"
-              />
-              <span class="slider-toggle"></span>
-            </label>
-          </div>
-          <div class="glass timer-card reveal">
-            <p>⏳ Hẹn giờ thư giãn</p>
-            <div
-              class="timer-opts"
-              role="group"
-              aria-label="Chọn thời gian hẹn giờ"
-            >
-              <button data-min="5">5 phút</button>
-              <button data-min="10">10 phút</button>
-              <button data-min="15">15 phút</button>
-              <button data-min="30">30 phút</button>
-            </div>
-            <div class="timer-display" id="timerDisplay"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================
-       SECRET MESSAGE
-  ========================= -->
-      <section id="bi-mat">
-        <div class="wrap">
-          <div class="glass secret-card reveal">
-            <button class="btn-soft" id="secretBtn">🔐 Mở điều bí mật</button>
-            <div class="secret-reveal" id="secretReveal">
-              <p>
-                Đôi khi điều em cần nhất không phải là một câu trả lời, mà chỉ
-                là một đêm thật bình yên.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================
-       FINAL SECTION
-  ========================= -->
-      <section class="final-section reveal">
-        <h2>🌙 Trước khi ngủ...</h2>
-        <p>
-          Hãy đặt điện thoại xuống một chút, hít thở thật chậm, và để ngày hôm
-          nay khép lại thật nhẹ nhàng.
-        </p>
-        <p style="margin-top: 8px">Chúc em ngủ ngon.</p>
-        <button class="btn-close-night" id="closeNightBtn">
-          💤 Khép lại đêm nay
+    <section class="special section" id="special" aria-labelledby="special-title">
+      <div class="special-moonlight" aria-hidden="true"></div>
+      <div class="special-hearts" aria-hidden="true">
+        <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+      </div>
+      <div class="shell special-content reveal">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Điều quan trọng nhất <span class="eyebrow-line" aria-hidden="true"></span></p>
+        <h2 id="special-title">Dù ngày mai<br><em>có ra sao…</em></h2>
+        <p class="special-message">Anh vẫn muốn chọn em.<br>Trong từng buổi bình minh, từng đêm trăng,<br>và trong tất cả những ngày chưa kịp đến.</p>
+        <button class="button button-primary magnetic" id="send-love-button" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg>
+          <span>Gửi em một trái tim</span>
         </button>
-      </section>
-
-      <!-- =========================
-       RESET
-  ========================= -->
-      <div class="reset-row">
-        <button class="btn-soft" id="resetBtn">🔄 Đặt lại trang</button>
+        <p class="special-signature">Anh yêu em — hôm nay, ngày mai, và mãi mãi.</p>
       </div>
+    </section>
+  </main>
 
-      <!-- =========================
-       FOOTER
-  ========================= -->
-      <footer>
-        <p>🌙 Một đêm bình yên nhé.</p>
-        <p class="heart-note">Made with ❤️ and a little bit of moonlight.</p>
-      </footer>
+  <footer class="site-footer">
+    <div class="footer-stars" aria-hidden="true">✦ · ✧ · ✦</div>
+    <div class="shell footer-main">
+      <a class="brand footer-brand" href="#home" aria-label="Về đầu trang">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="19" class="brand-moon-full"/>
+            <circle cx="31" cy="18" r="17" class="brand-moon-cut"/>
+            <path d="m37 8 1.2 3.3L41.5 12l-3.3 1.2L37 16.5l-1.2-3.3L32.5 12l3.3-.7Z" class="brand-spark"/>
+          </svg>
+        </span>
+        <span class="brand-text"><span class="brand-name">Tình Yêu</span><span class="brand-subtitle">Dưới Ánh Trăng</span></span>
+      </a>
+      <p class="footer-message">Cảm ơn em đã là ánh sáng<br>trong đêm tối của anh.</p>
+      <button class="back-to-top" id="back-to-top" type="button" aria-label="Trở về đầu trang">
+        <span>Về đầu trang</span>
+        <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"/></svg>
+      </button>
     </div>
-    <!-- /main-content -->
+    <div class="shell footer-bottom">
+      <p>© <span id="current-year">2026</span> Tình Yêu Dưới Ánh Trăng. Được làm bằng cả trái tim.</p>
+      <p><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg> Không máy chủ. Không theo dõi. Chỉ có kỷ niệm của bạn.</p>
+    </div>
+  </footer>
 
-    <!-- =========================
-     MODAL SYSTEM
-========================= -->
-    <div
-      class="modal-backdrop"
-      id="modalBackdrop"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modalTitle"
-    >
-      <div class="glass modal-box">
-        <h3 id="modalTitle"></h3>
-        <p id="modalMsg"></p>
-        <div class="modal-actions" id="modalActions"></div>
+  <dialog class="modal letter-modal" id="letter-dialog" aria-labelledby="letter-dialog-title">
+    <div class="modal-backdrop" data-close-dialog="letter-dialog"></div>
+    <div class="modal-panel letter-panel">
+      <button class="modal-close" type="button" data-close-dialog="letter-dialog" aria-label="Đóng lá thư">
+        <svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>
+      </button>
+      <div class="letter-paper-modal">
+        <span class="paper-corner corner-top" aria-hidden="true">✦</span>
+        <span class="paper-corner corner-bottom" aria-hidden="true">✧</span>
+        <p class="letter-date" id="letter-date"></p>
+        <h2 id="letter-dialog-title">Em yêu của anh,</h2>
+        <div class="typewriter-text" id="typewriter-text" aria-live="polite"></div>
+        <p class="letter-signature">Mãi yêu em,<br><span>Người của em</span></p>
+        <div class="letter-paper-heart" aria-hidden="true">♥</div>
       </div>
     </div>
+  </dialog>
 
-    <!-- =========================
-     JAVASCRIPT
-========================= -->
-    <script>
-      (function () {
-        "use strict";
+  <dialog class="modal import-modal" id="import-dialog" aria-labelledby="import-title">
+    <div class="modal-backdrop" data-close-dialog="import-dialog"></div>
+    <div class="modal-panel import-panel">
+      <header class="modal-header">
+        <div>
+          <p class="small-label">Một bước nhỏ nữa</p>
+          <h2 id="import-title">Đặt tên cho kỷ niệm</h2>
+          <p>Xem trước ảnh, thêm tiêu đề và lời nhắn trước khi lưu.</p>
+        </div>
+        <button class="modal-close static" type="button" data-close-dialog="import-dialog" aria-label="Đóng cửa sổ xem trước">
+          <svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>
+        </button>
+      </header>
+      <form id="import-form">
+        <div class="import-list" id="import-list"></div>
+        <div class="import-error" id="import-error" role="alert" hidden></div>
+        <footer class="modal-footer">
+          <button class="button button-ghost" type="button" data-close-dialog="import-dialog">Để sau</button>
+          <button class="button button-primary" id="save-photos" type="submit">
+            <svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg>
+            <span>Lưu vào kỷ niệm</span>
+          </button>
+        </footer>
+      </form>
+    </div>
+  </dialog>
 
-        /* ---------- CONFIG ---------- */
-        const CONFIG = {
-          defaultName: "",
-          youtubeVideoId: "1ZYbU82GVz4", // lofi / relaxing ambience — replace with your own video ID
-          storageKeys: {
-            name: "gn_name",
-            theme: "gn_theme",
-            nightMode: "gn_nightmode",
-            caption: "gn_caption",
-            bgCustom: "gn_bgcustom",
-          },
-          wishes: [
-            "Chúc em có một giấc ngủ thật bình yên.",
-            "Mong mọi mệt mỏi của hôm nay sẽ tan biến khi màn đêm buông xuống.",
-            "Hãy nghỉ ngơi thật tốt, ngày mai sẽ lại là một ngày mới.",
-            "Không cần suy nghĩ quá nhiều nữa, đêm nay hãy để trái tim được nghỉ ngơi.",
-            "Chúc em yêu ngủ thật ngon và thức dậy với một nụ cười thật nhẹ nhàng.",
-            "Cầu cho những giấc mơ của em đêm nay đều dịu dàng như ánh trăng.",
-            "Đêm nay cứ để mọi lo toan ở lại ngoài cửa, chỉ mang theo bình yên vào giấc ngủ.",
-            "Em yêu đã làm rất tốt rồi, giờ là lúc để nghỉ ngơi thật trọn vẹn.",
-            "Chúc em chìm vào giấc ngủ nhẹ như một hơi thở dài sau một ngày mệt nhoài.",
-            "Mong rằng đêm nay em sẽ ngủ ngon, không mộng mị, không muộn phiền.",
-            "Ngủ ngon nhé, để ngày mai đón em bằng thật nhiều điều tốt lành.",
-            "Một giấc ngủ sâu sẽ giúp bạn lấy lại năng lượng cho những điều phía trước.",
-            "Hãy để màn đêm ôm lấy mọi ưu tư, còn em chỉ cần yên tâm mà ngủ.",
-            "Chúc em có những giấc mơ đẹp như chính con người em vậy.",
-            "Đêm nay, hãy ngủ thật ngon vì em xứng đáng được nghỉ ngơi trọn vẹn.",
-            "Mong bình yên sẽ ở lại bên em suốt cả đêm dài.",
-            "Ngủ ngon, và hẹn gặp lại Em yêu trong một ngày mới tươi sáng hơn.",
-          ],
-          twMessages: [
-            "Đêm nay, hãy để mọi muộn phiền nằm lại phía sau...",
-            "Em xứng đáng có một giấc ngủ thật bình yên.",
-            "Nhắm mắt lại, và để tâm trí được nghỉ ngơi thật sự.",
-            "Ngày mai là một trang mới, còn đêm nay là để chữa lành.",
-          ],
-          starMessages: [
-            "Ngày mai sẽ tốt hơn.",
-            "Em đã cố gắng rất nhiều rồi.",
-            "Hãy nghỉ ngơi nhé.",
-            "Mọi chuyện rồi sẽ ổn thôi.",
-            "Em không cô đơn đâu.",
-          ],
-        };
+  <dialog class="modal lightbox-modal" id="lightbox-dialog" aria-labelledby="lightbox-title">
+    <div class="modal-backdrop" data-close-dialog="lightbox-dialog"></div>
+    <div class="modal-panel lightbox-panel">
+      <header class="lightbox-header">
+        <div>
+          <p class="small-label" id="lightbox-counter">Kỷ niệm 1 / 1</p>
+          <h2 id="lightbox-title">Một khoảnh khắc đáng nhớ</h2>
+        </div>
+        <div class="lightbox-actions">
+          <button class="icon-button" id="zoom-out" type="button" aria-label="Thu nhỏ ảnh" title="Thu nhỏ"><svg class="icon" aria-hidden="true"><use href="#icon-zoom-out"/></svg></button>
+          <button class="icon-button" id="zoom-in" type="button" aria-label="Phóng to ảnh" title="Phóng to"><svg class="icon" aria-hidden="true"><use href="#icon-zoom-in"/></svg></button>
+          <button class="icon-button" id="lightbox-fullscreen" type="button" aria-label="Xem toàn màn hình" title="Toàn màn hình"><svg class="icon" aria-hidden="true"><use href="#icon-expand"/></svg></button>
+          <button class="icon-button danger-hover" id="lightbox-delete" type="button" aria-label="Xóa ảnh này" title="Xóa ảnh"><svg class="icon" aria-hidden="true"><use href="#icon-trash"/></svg></button>
+          <button class="modal-close static" type="button" data-close-dialog="lightbox-dialog" aria-label="Đóng ảnh"><svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg></button>
+        </div>
+      </header>
+      <div class="lightbox-stage" id="lightbox-stage">
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Ảnh trước"><svg class="icon" aria-hidden="true"><use href="#icon-chevron-left"/></svg></button>
+        <div class="lightbox-image-wrap" id="lightbox-image-wrap"><img id="lightbox-image" src="" alt=""></div>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Ảnh tiếp theo"><svg class="icon" aria-hidden="true"><use href="#icon-chevron-right"/></svg></button>
+        <div class="lightbox-loading" id="lightbox-loading" hidden>Đang mở kỷ niệm…</div>
+      </div>
+      <div class="slideshow-controls" id="slideshow-controls" hidden>
+        <button class="button button-small button-ghost" id="slideshow-toggle" type="button"><svg class="icon" aria-hidden="true"><use href="#icon-pause"/></svg><span>Tạm dừng</span></button>
+        <span>Chuyển ảnh sau <strong id="slideshow-seconds">5</strong> giây</span>
+        <div class="slideshow-progress" aria-hidden="true"><span id="slideshow-progress-bar"></span></div>
+      </div>
+      <form class="photo-edit-form" id="photo-edit-form">
+        <div class="photo-edit-fields">
+          <label>Tên kỷ niệm<input id="edit-photo-title" type="text" maxlength="80" placeholder="Ví dụ: Buổi chiều bên biển"></label>
+          <label>Lời nhắn<input id="edit-photo-caption" type="text" maxlength="220" placeholder="Một điều bạn muốn nhớ…"></label>
+        </div>
+        <button class="button button-small button-ghost" type="submit"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Lưu thay đổi</button>
+      </form>
+    </div>
+  </dialog>
 
-        const $ = (sel, ctx = document) => ctx.querySelector(sel);
-        const $$ = (sel, ctx = document) =>
-          Array.from(ctx.querySelectorAll(sel));
-        const prefersReducedMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
-        ).matches;
-        const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
-        const canStorage = (() => {
-          try {
-            localStorage.setItem("__t", "1");
-            localStorage.removeItem("__t");
-            return true;
-          } catch (e) {
-            return false;
-          }
-        })();
+  <dialog class="modal confirm-modal" id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-description">
+    <div class="modal-backdrop" data-close-dialog="confirm-dialog"></div>
+    <div class="modal-panel confirm-panel">
+      <span class="confirm-icon" aria-hidden="true"><svg class="icon"><use href="#icon-heart"/></svg></span>
+      <h2 id="confirm-title">Xóa kỷ niệm này?</h2>
+      <p id="confirm-description">Hành động này không thể hoàn tác.</p>
+      <div class="confirm-actions">
+        <button class="button button-ghost" type="button" data-close-dialog="confirm-dialog">Giữ lại</button>
+        <button class="button button-danger" id="confirm-action" type="button">Xóa kỷ niệm</button>
+      </div>
+    </div>
+  </dialog>
 
-        function safeGet(key) {
-          if (!canStorage) return null;
-          try {
-            return localStorage.getItem(key);
-          } catch (e) {
-            return null;
-          }
-        }
-        function safeSet(key, val) {
-          if (!canStorage) return;
-          try {
-            localStorage.setItem(key, val);
-          } catch (e) {
-            /* ignore quota errors */
-          }
-        }
-        function safeRemove(key) {
-          if (!canStorage) return;
-          try {
-            localStorage.removeItem(key);
-          } catch (e) {}
-        }
-
-        /* ---------- MODAL ---------- */
-        function showModal({
-          title,
-          msg,
-          confirmText = "Đồng ý",
-          cancelText = null,
-          onConfirm = null,
-        }) {
-          const backdrop = $("#modalBackdrop");
-          $("#modalTitle").textContent = title;
-          $("#modalMsg").textContent = msg;
-          const actions = $("#modalActions");
-          actions.innerHTML = "";
-          const confirmBtn = document.createElement("button");
-          confirmBtn.className = "confirm";
-          confirmBtn.textContent = confirmText;
-          confirmBtn.onclick = () => {
-            closeModal();
-            if (onConfirm) onConfirm();
-          };
-          actions.appendChild(confirmBtn);
-          if (cancelText) {
-            const cancelBtn = document.createElement("button");
-            cancelBtn.className = "cancel";
-            cancelBtn.textContent = cancelText;
-            cancelBtn.onclick = closeModal;
-            actions.appendChild(cancelBtn);
-          }
-          backdrop.classList.add("open");
-          confirmBtn.focus();
-        }
-        function closeModal() {
-          $("#modalBackdrop").classList.remove("open");
-        }
-        $("#modalBackdrop").addEventListener("click", (e) => {
-          if (e.target.id === "modalBackdrop") closeModal();
-        });
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeModal();
-        });
-
-        /* ---------- HERO REVEAL ---------- */
-        $("#openBtn").addEventListener("click", () => {
-          $("#mainContent").classList.add("revealed");
-          $("#loi-chuc").scrollIntoView({
-            behavior: prefersReducedMotion ? "auto" : "smooth",
-          });
-        });
-
-        /* ---------- NAV MOBILE TOGGLE ---------- */
-        const navToggle = $("#navToggle"),
-          navLinks = $("#navLinks");
-        navToggle.addEventListener("click", () => {
-          const open = navLinks.classList.toggle("open");
-          navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-        });
-        $$(".nav-links a").forEach((a) =>
-          a.addEventListener("click", () => {
-            navLinks.classList.remove("open");
-            navToggle.setAttribute("aria-expanded", "false");
-            $("#mainContent").classList.add("revealed");
-          }),
-        );
-
-        /* ---------- SCROLL REVEAL ---------- */
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((en) => {
-                if (en.isIntersecting) {
-                  en.target.classList.add("in");
-                  io.unobserve(en.target);
-                }
-              });
-            },
-            { threshold: 0.15 },
-          );
-          $$(".reveal").forEach((el) => io.observe(el));
-        } else {
-          $$(".reveal").forEach((el) => el.classList.add("in"));
-        }
-
-        /* =========================
-   NIGHT SKY CANVAS
-========================= */
-        const canvas = $("#sky-canvas");
-        const ctx2d = canvas.getContext("2d");
-        let W,
-          H,
-          stars = [],
-          shootingStars = [];
-        function resizeCanvas() {
-          W = canvas.width = window.innerWidth;
-          H = canvas.height = window.innerHeight;
-        }
-        function initStars() {
-          const count = Math.min(160, Math.floor((W * H) / 9000));
-          stars = Array.from({ length: count }, () => ({
-            x: Math.random() * W,
-            y: Math.random() * H * 0.85,
-            r: Math.random() * 1.6 + 0.4,
-            baseAlpha: Math.random() * 0.5 + 0.3,
-            phase: Math.random() * Math.PI * 2,
-            speed: Math.random() * 0.015 + 0.005,
-          }));
-        }
-        resizeCanvas();
-        initStars();
-        window.addEventListener("resize", () => {
-          resizeCanvas();
-          initStars();
-        });
-
-        function maybeSpawnShootingStar() {
-          if (Math.random() < 0.0025 && shootingStars.length < 2) {
-            shootingStars.push({
-              x: Math.random() * W * 0.6,
-              y: Math.random() * H * 0.3,
-              len: 0,
-              vx: 6 + Math.random() * 4,
-              vy: 3 + Math.random() * 2,
-              life: 0,
-            });
-          }
-        }
-        let rafId;
-        function drawSky() {
-          ctx2d.clearRect(0, 0, W, H);
-          stars.forEach((s) => {
-            s.phase += s.speed;
-            const a = s.baseAlpha + Math.sin(s.phase) * 0.25;
-            ctx2d.beginPath();
-            ctx2d.fillStyle = `rgba(245,240,230,${Math.max(0, a)})`;
-            ctx2d.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-            ctx2d.fill();
-          });
-          maybeSpawnShootingStar();
-          shootingStars.forEach((s) => {
-            s.x += s.vx;
-            s.y += s.vy;
-            s.life++;
-            const grad = ctx2d.createLinearGradient(
-              s.x,
-              s.y,
-              s.x - s.vx * 8,
-              s.y - s.vy * 8,
-            );
-            grad.addColorStop(0, "rgba(255,255,255,.9)");
-            grad.addColorStop(1, "rgba(255,255,255,0)");
-            ctx2d.strokeStyle = grad;
-            ctx2d.lineWidth = 2;
-            ctx2d.beginPath();
-            ctx2d.moveTo(s.x, s.y);
-            ctx2d.lineTo(s.x - s.vx * 8, s.y - s.vy * 8);
-            ctx2d.stroke();
-          });
-          shootingStars = shootingStars.filter(
-            (s) => s.life < 90 && s.x < W + 50 && s.y < H + 50,
-          );
-          rafId = requestAnimationFrame(drawSky);
-        }
-        if (!prefersReducedMotion) {
-          drawSky();
-        } else {
-          drawSky();
-          cancelAnimationFrame(rafId);
-        }
-
-        /* clickable decorative stars */
-        const starEmojis = ["✦", "✧", "⋆"];
-        function scatterClickableStars() {
-          const layer = document.createElement("div");
-          layer.style.position = "fixed";
-          layer.style.inset = "0";
-          layer.style.zIndex = "1";
-          layer.style.pointerEvents = "none";
-          layer.id = "clickable-star-layer";
-          document.body.prepend(layer);
-          const positions = [
-            { top: "12%", left: "8%" },
-            { top: "20%", left: "78%" },
-            { top: "35%", left: "22%" },
-            { top: "14%", left: "55%" },
-            { top: "28%", left: "90%" },
-            { top: "8%", left: "35%" },
-          ];
-          positions.forEach((pos, i) => {
-            const b = document.createElement("button");
-            b.className = "clickable-star";
-            b.style.top = pos.top;
-            b.style.left = pos.left;
-            b.style.pointerEvents = "auto";
-            b.style.animationDelay = i * 0.4 + "s";
-            b.textContent = starEmojis[i % starEmojis.length];
-            b.setAttribute("aria-label", "Chạm vào một ngôi sao");
-            b.addEventListener("click", (e) => {
-              burstAt(e.clientX, e.clientY, "gold");
-              const msg = pickRandom(CONFIG.starMessages);
-              showFloatingNote(e.clientX, e.clientY, msg);
-            });
-            layer.appendChild(b);
-          });
-        }
-        scatterClickableStars();
-
-        function showFloatingNote(x, y, text) {
-          const el = document.createElement("div");
-          el.textContent = text;
-          el.style.position = "fixed";
-          el.style.left = x + "px";
-          el.style.top = y + "px";
-          el.style.transform = "translate(-50%,-100%)";
-          el.style.color = "var(--accent-gold)";
-          el.style.fontFamily = "var(--font-display)";
-          el.style.fontStyle = "italic";
-          el.style.fontSize = "1rem";
-          el.style.zIndex = "60";
-          el.style.pointerEvents = "none";
-          el.style.opacity = "1";
-          el.style.transition =
-            "transform 1.6s ease-out, opacity 1.6s ease-out";
-          document.body.appendChild(el);
-          requestAnimationFrame(() => {
-            el.style.transform = "translate(-50%,-160%)";
-            el.style.opacity = "0";
-          });
-          setTimeout(() => el.remove(), 1700);
-        }
-        function burstAt(x, y, color) {
-          const n = prefersReducedMotion ? 0 : 8;
-          for (let i = 0; i < n; i++) {
-            const p = document.createElement("div");
-            p.style.position = "fixed";
-            p.style.left = x + "px";
-            p.style.top = y + "px";
-            p.style.width = "4px";
-            p.style.height = "4px";
-            p.style.borderRadius = "50%";
-            p.style.background =
-              color === "gold" ? "var(--accent-gold)" : "var(--accent-pink)";
-            p.style.zIndex = "60";
-            p.style.pointerEvents = "none";
-            const angle = Math.random() * Math.PI * 2,
-              dist = 20 + Math.random() * 40;
-            p.style.transition = "transform .7s ease-out, opacity .7s ease-out";
-            document.body.appendChild(p);
-            requestAnimationFrame(() => {
-              p.style.transform = `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist}px)`;
-              p.style.opacity = "0";
-            });
-            setTimeout(() => p.remove(), 750);
-          }
-        }
-
-        /* floating clouds (CSS-driven, generated once) */
-        (function initClouds() {
-          const layer = $("#clouds-layer");
-          const specs = [
-            { top: "10%", w: 180, h: 50, dur: 70 },
-            { top: "22%", w: 120, h: 36, dur: 90 },
-            { top: "5%", w: 90, h: 28, dur: 60 },
-          ];
-          specs.forEach((s, i) => {
-            const c = document.createElement("div");
-            c.className = "cloud";
-            c.style.top = s.top;
-            c.style.width = s.w + "px";
-            c.style.height = s.h + "px";
-            c.style.left = "-250px";
-            c.style.animation = prefersReducedMotion
-              ? "none"
-              : `driftCloud ${s.dur}s linear infinite`;
-            c.style.animationDelay = i * 15 + "s";
-            layer.appendChild(c);
-          });
-          const styleEl = document.createElement("style");
-          styleEl.textContent = `@keyframes driftCloud{ from{ transform:translateX(0);} to{ transform:translateX(calc(100vw + 300px));} }`;
-          document.head.appendChild(styleEl);
-        })();
-
-        /* =========================
-   NAME + TYPEWRITER
-========================= */
-        const nameInput = $("#nameInput"),
-          dynamicGreeting = $("#dynamicGreeting");
-        function updateGreeting() {
-          const name = nameInput.value.trim();
-          dynamicGreeting.textContent = name
-            ? `🌙 Ngủ ngon nhé, ${name}`
-            : "🌙 Chúc bạn ngủ ngon";
-          safeSet(CONFIG.storageKeys.name, name);
-        }
-        nameInput.addEventListener("input", updateGreeting);
-        const savedName = safeGet(CONFIG.storageKeys.name);
-        if (savedName) {
-          nameInput.value = savedName;
-        }
-        updateGreeting();
-
-        let twIndex = 0,
-          twTimer = null;
-        function typewriteMessage(text) {
-          const box = $("#typewriterBox");
-          box.innerHTML = "";
-          const span = document.createElement("span");
-          box.appendChild(span);
-          const cursor = document.createElement("span");
-          cursor.className = "tw-cursor";
-          box.appendChild(cursor);
-          if (prefersReducedMotion) {
-            span.textContent = text;
-            return;
-          }
-          let i = 0;
-          clearInterval(twTimer);
-          twTimer = setInterval(() => {
-            span.textContent = text.slice(0, i + 1);
-            i++;
-            if (i >= text.length) {
-              clearInterval(twTimer);
-            }
-          }, 38);
-        }
-        function cycleTypewriter() {
-          typewriteMessage(
-            CONFIG.twMessages[twIndex % CONFIG.twMessages.length],
-          );
-          twIndex++;
-        }
-        cycleTypewriter();
-        setInterval(cycleTypewriter, 7000);
-
-        /* =========================
-   RANDOM WISH
-========================= */
-        let lastWishIdx = -1;
-        $("#newWishBtn").addEventListener("click", () => {
-          let idx;
-          do {
-            idx = Math.floor(Math.random() * CONFIG.wishes.length);
-          } while (idx === lastWishIdx && CONFIG.wishes.length > 1);
-          lastWishIdx = idx;
-          $("#wishText").textContent = CONFIG.wishes[idx];
-        });
-        function pickRandom(arr) {
-          return arr[Math.floor(Math.random() * arr.length)];
-        }
-
-        /* =========================
-   HEARTS
-========================= */
-        function spawnHeart(x, y) {
-          const h = document.createElement("div");
-          h.className = "heart";
-          h.textContent = "💗";
-          const size = 14 + Math.random() * 14;
-          h.style.left = x + (Math.random() * 40 - 20) + "px";
-          h.style.top = y + "px";
-          h.style.fontSize = size + "px";
-          h.style.opacity = "1";
-          document.body.appendChild(h);
-          if (prefersReducedMotion) {
-            setTimeout(() => h.remove(), 800);
-            return;
-          }
-          const drift = Math.random() * 60 - 30;
-          const dur = 2200 + Math.random() * 1400;
-          h.animate(
-            [
-              { transform: "translate(0,0)", opacity: 1 },
-              { transform: `translate(${drift}px,-160px)`, opacity: 0 },
-            ],
-            { duration: dur, easing: "ease-out" },
-          );
-          setTimeout(() => h.remove(), dur);
-        }
-        $("#sendHeartBtn").addEventListener("click", (e) => {
-          const rect = e.target.getBoundingClientRect();
-          for (let i = 0; i < 10; i++) {
-            setTimeout(
-              () => spawnHeart(rect.left + rect.width / 2, rect.top),
-              i * 80,
-            );
-          }
-        });
-        // gentle ambient hearts, capped and cleaned up
-        if (!prefersReducedMotion) {
-          setInterval(() => {
-            if (
-              document.querySelectorAll(".heart").length < 6 &&
-              Math.random() < 0.4
-            ) {
-              spawnHeart(
-                Math.random() * window.innerWidth,
-                window.innerHeight - 40,
-              );
-            }
-          }, 3500);
-        }
-
-        /* =========================
-   PHOTO UPLOAD
-========================= */
-        let currentPhotoUrl = null;
-        const photoInput = $("#photoInput"),
-          photoCard = $("#photoCard"),
-          photoPreview = $("#photoPreview"),
-          photoStatus = $("#photoStatus");
-        photoInput.addEventListener("change", (e) => {
-          const file = e.target.files[0];
-          if (!file) return;
-          if (!file.type.startsWith("image/")) {
-            showModal({
-              title: "Không thể tải ảnh",
-              msg: "⚠️ Tệp bạn chọn không phải là hình ảnh. Vui lòng thử một hình khác.",
-            });
-            return;
-          }
-          if (file.size > 15 * 1024 * 1024) {
-            showModal({
-              title: "Ảnh quá lớn",
-              msg: "⚠️ Không thể tải hình ảnh này. Vui lòng thử một hình khác nhỏ hơn.",
-            });
-            return;
-          }
-          try {
-            if (currentPhotoUrl) URL.revokeObjectURL(currentPhotoUrl);
-            currentPhotoUrl = URL.createObjectURL(file);
-            photoPreview.src = currentPhotoUrl;
-            photoPreview.alt = "Ảnh kỷ niệm: " + file.name;
-            photoCard.classList.add("show");
-            photoStatus.textContent =
-              "💗 Bức ảnh này sẽ cùng bạn lưu giữ khoảnh khắc bình yên.";
-          } catch (err) {
-            showModal({
-              title: "Có lỗi xảy ra",
-              msg: "⚠️ Không thể tải hình ảnh này. Vui lòng thử một hình khác.",
-            });
-          }
-        });
-        $("#removePhotoBtn").addEventListener("click", () => {
-          if (currentPhotoUrl) {
-            URL.revokeObjectURL(currentPhotoUrl);
-            currentPhotoUrl = null;
-          }
-          photoPreview.src = "";
-          photoCard.classList.remove("show");
-          photoStatus.textContent = "";
-          photoInput.value = "";
-        });
-        const captionInput = $("#photoCaption");
-        const savedCaption = safeGet(CONFIG.storageKeys.caption);
-        if (savedCaption) captionInput.value = savedCaption;
-        captionInput.addEventListener("input", () =>
-          safeSet(CONFIG.storageKeys.caption, captionInput.value),
-        );
-
-        /* =========================
-   BACKGROUND THEME SELECTOR
-========================= */
-        const themeClasses = [
-          "theme-galaxy",
-          "theme-moon",
-          "theme-purple",
-          "theme-blue",
-          "theme-garden",
-        ];
-        function applyTheme(theme) {
-          document.body.classList.remove(...themeClasses);
-          document.body.classList.add("theme-" + theme);
-          $$(".bg-btn").forEach((b) =>
-            b.classList.toggle("active", b.dataset.theme === theme),
-          );
-          safeSet(CONFIG.storageKeys.theme, theme);
-        }
-        $$(".bg-btn").forEach((btn) => {
-          btn.addEventListener("click", () => applyTheme(btn.dataset.theme));
-        });
-        const savedTheme = safeGet(CONFIG.storageKeys.theme);
-        applyTheme(savedTheme || "galaxy");
-
-        /* custom background image */
-        let currentBgUrl = null;
-        const bgInput = $("#bgInput");
-        bgInput.addEventListener("change", (e) => {
-          const file = e.target.files[0];
-          if (!file) return;
-          if (!file.type.startsWith("image/")) {
-            showModal({
-              title: "Không thể tải hình nền",
-              msg: "⚠️ Tệp bạn chọn không phải là hình ảnh. Vui lòng thử một hình khác.",
-            });
-            return;
-          }
-          try {
-            if (currentBgUrl) URL.revokeObjectURL(currentBgUrl);
-            currentBgUrl = URL.createObjectURL(file);
-            document.body.style.backgroundImage = `linear-gradient(rgba(6,8,20,.55),rgba(6,8,20,.55)), url(${currentBgUrl})`;
-            document.body.classList.add("custom-bg");
-          } catch (err) {
-            showModal({
-              title: "Có lỗi xảy ra",
-              msg: "⚠️ Không thể tải hình nền này. Vui lòng thử một hình khác.",
-            });
-          }
-        });
-        $("#resetBgBtn").addEventListener("click", () => {
-          if (currentBgUrl) {
-            URL.revokeObjectURL(currentBgUrl);
-            currentBgUrl = null;
-          }
-          document.body.style.backgroundImage = "";
-          document.body.classList.remove("custom-bg");
-          bgInput.value = "";
-        });
-
-        /* =========================
-   MUSIC PLAYER (YouTube IFrame API)
-========================= */
-        let ytPlayer = null,
-          ytReady = false,
-          ytFailed = false,
-          progressTimer = null;
-        function loadYouTubeAPI() {
-          if (window.YT && window.YT.Player) {
-            createPlayer();
-            return;
-          }
-          const tag = document.createElement("script");
-          tag.src = "https://www.youtube.com/iframe_api";
-          tag.onerror = () => handleMusicFailure();
-          document.head.appendChild(tag);
-          window.onYouTubeIframeAPIReady = createPlayer;
-          setTimeout(() => {
-            if (!ytReady && !ytFailed) handleMusicFailure();
-          }, 6000);
-        }
-        function createPlayer() {
-          try {
-            ytPlayer = new YT.Player("yt-player", {
-              videoId: CONFIG.youtubeVideoId,
-              playerVars: { controls: 0, disablekb: 1, modestbranding: 1 },
-              events: {
-                onReady: () => {
-                  ytReady = true;
-                  ytPlayer.setVolume(60);
-                  $("#durTime").textContent = formatTime(
-                    ytPlayer.getDuration(),
-                  );
-                },
-                onError: handleMusicFailure,
-                onStateChange: onPlayerStateChange,
-              },
-            });
-          } catch (e) {
-            handleMusicFailure();
-          }
-        }
-        function handleMusicFailure() {
-          ytFailed = true;
-          $("#musicFallback").style.display = "block";
-          $("#playBtn").disabled = true;
-          $("#playBtn").style.opacity = ".5";
-        }
-        function onPlayerStateChange(ev) {
-          const eq = $("#eqBars");
-          if (ev.data === YT.PlayerState.PLAYING) {
-            eq.classList.remove("paused");
-            $("#playBtn").textContent = "⏸";
-            if (!progressTimer)
-              progressTimer = setInterval(updateProgress, 500);
-          } else {
-            eq.classList.add("paused");
-            $("#playBtn").textContent = "▶";
-            if (ev.data === YT.PlayerState.ENDED) {
-              clearInterval(progressTimer);
-              progressTimer = null;
-            }
-          }
-        }
-        function updateProgress() {
-          if (!ytPlayer || !ytPlayer.getCurrentTime) return;
-          const cur = ytPlayer.getCurrentTime(),
-            dur = ytPlayer.getDuration() || 0;
-          $("#curTime").textContent = formatTime(cur);
-          $("#durTime").textContent = formatTime(dur);
-          $("#progressFill").style.width = dur ? (cur / dur) * 100 + "%" : "0%";
-        }
-        function formatTime(t) {
-          if (!isFinite(t) || t < 0) t = 0;
-          const m = Math.floor(t / 60),
-            s = Math.floor(t % 60);
-          return m + ":" + String(s).padStart(2, "0");
-        }
-        $("#playBtn").addEventListener("click", () => {
-          if (ytFailed) return;
-          if (!ytPlayer) {
-            loadYouTubeAPI();
-            return;
-          }
-          const state = ytPlayer.getPlayerState
-            ? ytPlayer.getPlayerState()
-            : -1;
-          if (state === YT.PlayerState.PLAYING) {
-            ytPlayer.pauseVideo();
-          } else {
-            ytPlayer.playVideo();
-          }
-        });
-        $("#volSlider").addEventListener("input", (e) => {
-          if (ytPlayer && ytPlayer.setVolume)
-            ytPlayer.setVolume(Number(e.target.value));
-        });
-
-        /* =========================
-   DIGITAL CLOCK
-========================= */
-        const weekdays = [
-          "Chủ Nhật",
-          "Thứ Hai",
-          "Thứ Ba",
-          "Thứ Tư",
-          "Thứ Năm",
-          "Thứ Sáu",
-          "Thứ Bảy",
-        ];
-        function updateClock() {
-          const now = new Date();
-          const hh = String(now.getHours()).padStart(2, "0");
-          const mm = String(now.getMinutes()).padStart(2, "0");
-          const ss = String(now.getSeconds()).padStart(2, "0");
-          $("#clockTime").textContent = `${hh}:${mm}:${ss}`;
-          $("#clockDate").textContent =
-            `${weekdays[now.getDay()]}, ngày ${now.getDate()} tháng ${now.getMonth() + 1} năm ${now.getFullYear()}`;
-        }
-        updateClock();
-        setInterval(updateClock, 1000);
-
-        /* =========================
-   NIGHT MODE TOGGLE
-========================= */
-        const nightToggle = $("#nightModeToggle");
-        function setNightMode(on) {
-          document.body.classList.toggle("deep-night", on);
-          nightToggle.checked = on;
-          safeSet(CONFIG.storageKeys.nightMode, on ? "1" : "0");
-        }
-        nightToggle.addEventListener("change", (e) =>
-          setNightMode(e.target.checked),
-        );
-        setNightMode(safeGet(CONFIG.storageKeys.nightMode) === "1");
-
-        /* =========================
-   SLEEP TIMER
-========================= */
-        let sleepInterval = null;
-        $$(".timer-opts button").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const mins = Number(btn.dataset.min);
-            startSleepTimer(mins);
-          });
-        });
-        function startSleepTimer(mins) {
-          clearInterval(sleepInterval);
-          let remaining = mins * 60;
-          const display = $("#timerDisplay");
-          function tick() {
-            const m = Math.floor(remaining / 60),
-              s = remaining % 60;
-            display.textContent = `🌙 Thời gian thư giãn còn: ${m}:${String(s).padStart(2, "0")}`;
-            if (remaining <= 0) {
-              clearInterval(sleepInterval);
-              display.textContent = "Chúc ngủ ngon 🌙";
-              return;
-            }
-            remaining--;
-          }
-          tick();
-          sleepInterval = setInterval(tick, 1000);
-        }
-
-        /* =========================
-   SECRET MESSAGE
-========================= */
-        $("#secretBtn").addEventListener("click", (e) => {
-          const reveal = $("#secretReveal");
-          const opening = !reveal.classList.contains("open");
-          reveal.classList.toggle("open");
-          if (opening) {
-            const rect = e.target.getBoundingClientRect();
-            burstAt(rect.left + rect.width / 2, rect.top, "gold");
-          }
-        });
-
-        /* =========================
-   FINAL — CLOSE NIGHT
-========================= */
-        $("#closeNightBtn").addEventListener("click", () => {
-          $("#dimOverlay").classList.add("active");
-        });
-        $("#dimOverlay").addEventListener("click", () => {
-          $("#dimOverlay").classList.remove("active");
-        });
-
-        /* =========================
-   RESET
-========================= */
-        $("#resetBtn").addEventListener("click", () => {
-          showModal({
-            title: "Đặt lại trang?",
-            msg: "Thao tác này sẽ xoá tên, ảnh, hình nền và các tuỳ chỉnh bạn đã thực hiện. Bạn có chắc chắn không?",
-            confirmText: "Đặt lại",
-            cancelText: "Huỷ",
-            onConfirm: () => {
-              Object.values(CONFIG.storageKeys).forEach(safeRemove);
-              if (currentPhotoUrl) URL.revokeObjectURL(currentPhotoUrl);
-              if (currentBgUrl) URL.revokeObjectURL(currentBgUrl);
-              clearInterval(sleepInterval);
-              window.location.reload();
-            },
-          });
-        });
-
-        /* =========================
-   MOUSE EFFECTS (desktop only)
-========================= */
-        if (!isCoarsePointer && !prefersReducedMotion) {
-          document.body.classList.add("has-fine-pointer");
-          const glow = document.createElement("div");
-          glow.className = "cursor-glow";
-          document.body.appendChild(glow);
-          let lastTrail = 0;
-          window.addEventListener("mousemove", (e) => {
-            glow.style.left = e.clientX + "px";
-            glow.style.top = e.clientY + "px";
-            const now = performance.now();
-            if (now - lastTrail > 60) {
-              lastTrail = now;
-              const p = document.createElement("div");
-              p.className = "particle-trail";
-              p.style.left = e.clientX + "px";
-              p.style.top = e.clientY + "px";
-              document.body.appendChild(p);
-              p.animate(
-                [
-                  { opacity: 0.7, transform: "scale(1)" },
-                  { opacity: 0, transform: "scale(.2)" },
-                ],
-                { duration: 600 },
-              );
-              setTimeout(() => p.remove(), 600);
-            }
-          });
-          document.addEventListener("click", (e) => {
-            const r = document.createElement("div");
-            r.className = "ripple";
-            r.style.left = e.clientX + "px";
-            r.style.top = e.clientY + "px";
-            document.body.appendChild(r);
-            setTimeout(() => r.remove(), 700);
-          });
-          // magnetic buttons
-          $$("button, .upload-label").forEach((btn) => {
-            btn.addEventListener("mousemove", (e) => {
-              const rect = btn.getBoundingClientRect();
-              const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.12;
-              const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.12;
-              btn.style.transform = `translate(${dx}px, ${dy}px)`;
-            });
-            btn.addEventListener("mouseleave", () => {
-              btn.style.transform = "";
-            });
-          });
-        }
-
-        /* global JS error safety net — never let one feature break the whole page */
-        window.addEventListener("error", function () {
-          /* silently contained; page keeps working */
-        });
-      })();
-    </script>
-  </body>
+  <noscript>
+    <div class="noscript-message">
+      <h2>Bạn cần bật JavaScript để bước vào vũ trụ này</h2>
+      <p>Hãy bật JavaScript trong trình duyệt rồi tải lại trang để trải nghiệm đầy đủ các tương tác.</p>
+    </div>
+  </noscript>
+</body>
 </html>
